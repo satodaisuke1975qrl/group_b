@@ -19,23 +19,40 @@ python manage.py runserver
 ```
 ・HTML
 tv_list.html : 番組一覧
-tv_detail.html: : 詳細画面
-tv_search.html : 検索画面
+tv_detail.html: : 詳細画面　ここに全員分のコメントを表示
+tv_search.html : 曖昧検索画面
 
 comment_create.html : 
+comment_list.html : 自分が書き込んだコメントのみの表示をここでしたい
 comment_update.html : 
+comment_delete.html :
 コメントの削除はhtmlではなくJSのポップアップにしたい
 
 base.html : 遷移後も変えたくないもの（背景のCSSとか）はここで！
 
+
 ・tvasahi/forms.py
 CommentCreateForm
-
 CommentUpdateForm
-
 SearchForm
     keyword
     category
+    
+    
+・tvasahi/views.py
+
+TvListView
+TvDetailView
+
+CommentCreateView
+CommentListView
+CommentUpdateView
+CommentDeleteView
+
+
+
+
+
 
 ```
 
