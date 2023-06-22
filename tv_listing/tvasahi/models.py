@@ -3,6 +3,17 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 
 
+class Date(models.Model):
+    on_air_date = models.CharField(verbose_name='放送日', max_length=255)
+
+    def __str__(self):
+        return self.on_air_date
+
+    class Meta:
+        verbose_name = "放送日"
+        verbose_name_plural = "放送日"
+
+
 class Category(models.Model):
     category_name = models.CharField('カテゴリー', max_length=255)
 
@@ -12,17 +23,6 @@ class Category(models.Model):
     class Meta:
         verbose_name = "カテゴリー"
         verbose_name_plural = "カテゴリー"
-
-
-class Date(models.Model):
-    on_air_date = models.DateField('放送日')
-
-    def __str__(self):
-        return self.on_air_date
-
-    class Meta:
-        verbose_name = "放送日"
-        verbose_name_plural = "放送日"
 
 
 class Tv(models.Model):
@@ -35,8 +35,8 @@ class Tv(models.Model):
     created_at = models.DateTimeField('作成日', default=timezone.now)
 
     class Meta:
-        verbose_name = "番組"
-        verbose_name_plural = "番組"
+        verbose_name = "番組タイトル"
+        verbose_name_plural = "番組タイトル"
 
 
 class Comment(models.Model):
