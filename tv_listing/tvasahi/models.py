@@ -38,6 +38,9 @@ class Tv(models.Model):
         verbose_name = "番組タイトル"
         verbose_name_plural = "番組タイトル"
 
+    def __str__(self):
+        return self.program_name
+
 
 class Comment(models.Model):
     user_name = models.CharField('お名前', max_length=255, default='名無し')
