@@ -1,16 +1,16 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Category
 
 class CommentCreateForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("name","text",)
+        fields = ("user_name","comment",)
 
 
 class CommentUpdateForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("name","text",)
+        fields = ("user_name","comment",)
 
 
 class SearchForm(forms.Form):
