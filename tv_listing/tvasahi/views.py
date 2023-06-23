@@ -37,11 +37,10 @@ class CommentDeleteView(generic.DeleteView):
 
 """
 
-"""
+
 class SearchView(generic.ListView):
     model = Tv
     template_name = 'tvasahi/tv_search.html'
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,4 +68,3 @@ class SearchView(generic.ListView):
             queryset = queryset.filter(category=category)
 
         return queryset
-"""
