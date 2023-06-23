@@ -35,10 +35,9 @@ class CommentUpdateView(generic.UpdateView):
 class CommentDeleteView(generic.DeleteView):
 
 
+"""
 
 
 class SearchView(generic.TemplateView):
     model = Tv
     template_name = 'tvasahi/tv_search.html'
-    
-"""
