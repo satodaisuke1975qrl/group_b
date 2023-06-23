@@ -1,6 +1,17 @@
-{%  extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %}
 
-検索ページ作成予定です。
+{% block content %}
+<h2>番組を検索</h2>
+
+<form action="" method="GET">
+  {{ form.as_div }}
+  <button type="submit">検索</button>
+</form>
+
+<div>
+    {% for tv in tv_list %}
+        <a href="{% url 'tvasahi:tv_list'%}">{{ tv.program_name }}</a>
+    {% endfor %}
+</div>
 
 {% endblock %}
