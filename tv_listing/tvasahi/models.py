@@ -27,7 +27,7 @@ class Category(models.Model):
 
 class Tv(models.Model):
     program_name = models.CharField('番組名', max_length=255)
-    time = models.TimeField('放送時間')
+    time = models.CharField('放送時間', max_length=25)
     content = models.TextField('番組内容')
     url = models.URLField('番組サイト', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='カテゴリ')
