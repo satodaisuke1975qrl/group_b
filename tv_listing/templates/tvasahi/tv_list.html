@@ -4,9 +4,8 @@
 
   {% for tv in tv_list %}
     <p>
-      <a href="{% url 'tvasahi:tv_detail' tv.id %}">
+
         {{ tv.program_name }}
-      </a>
     </p>
   {% endfor %}
 {% endblock %}
