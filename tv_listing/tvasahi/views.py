@@ -3,6 +3,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .forms import CommentCreateForm, CommentUpdateForm, SearchForm
 from .models import Tv, Date
+from django.db.models import Q
 
 
 # # Create your views here.

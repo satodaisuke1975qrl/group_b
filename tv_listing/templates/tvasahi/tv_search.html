@@ -10,7 +10,7 @@
 
 <div>
     {% for tv in tv_list %}
-        <a href="{% url 'tvasahi:tv_list'%}">{{ tv.program_name }}</a>
+        <a href="{% url 'tvasahi:tv_detail' tv.pk%}">{{ tv.program_name }}</a>
     {% endfor %}
 </div>
 
