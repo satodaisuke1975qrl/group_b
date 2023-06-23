@@ -15,13 +15,14 @@ class Home(generic.TemplateView):
 class TvListView(generic.ListView):
     model = Tv
     template_name = 'tvasahi/tv_list.html'
-    
+
+
+class TvDetailView(generic.DetailView):
+    model = Tv
+    template_name = 'tvasahi/tv_detail.html'
+
 
 """
-    
-class TvDetailView(generic.DetailView):
-
-
 class CommentCreateView(generic.CreateView):
 
 
@@ -33,4 +34,11 @@ class CommentUpdateView(generic.UpdateView):
 
 class CommentDeleteView(generic.DeleteView):
 
+
+
+
+class SearchView(generic.TemplateView):
+    model = Tv
+    template_name = 'tvasahi/tv_search.html'
+    
 """
