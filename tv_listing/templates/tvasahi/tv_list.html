@@ -3,7 +3,7 @@
 
     {% for tv in tv_list %}
     <div>
-        {{ tv.time }}
+        {{ tv.get_time_hour_and_minute }}
         {% if tv.url == null %}
             {{ tv.program_name }}
         {% else %}
