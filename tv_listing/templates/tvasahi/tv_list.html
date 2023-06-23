@@ -3,9 +3,17 @@
 
 
   {% for tv in tv_list %}
-    <p>
-
+    {{ tv.time }}
+    {% if tv.url == null %}
+      <p>
         {{ tv.program_name }}
-    </p>
+      </p>
+    {% else %}
+        <a href="{{ tv.url }}">
+          {{ tv.program_name }}
+        </a>
+    {% endif %}
+<!--　<button onclick="location.href='{% url "blog:article_detail" tv.id %}'" type="submit">詳細ページ</button>-->
+    <a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a>
   {% endfor %}
 {% endblock %}
