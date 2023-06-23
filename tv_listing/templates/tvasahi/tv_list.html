@@ -2,10 +2,10 @@
 {% block content %}
 
 
-  {% for article in article_list %}
+  {% for tv in tv_list %}
     <p>
-      <a href="{% url 'blog:article_detail' article.id %}">
-        {{ article.title }}
+      <a href="{% url 'tvasahi:tv_detail' tv.id %}">
+        {{ tv.program_name }}
       </a>
     </p>
   {% endfor %}
