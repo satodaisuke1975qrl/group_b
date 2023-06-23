@@ -34,6 +34,9 @@ class Tv(models.Model):
     date = models.ForeignKey(Date, on_delete=models.PROTECT, verbose_name='放送日')
     created_at = models.DateTimeField('作成日', default=timezone.now)
 
+    def get_time_hour_and_minute(self):
+        return self.time[:5]
+
     class Meta:
         verbose_name = "番組タイトル"
         verbose_name_plural = "番組タイトル"
