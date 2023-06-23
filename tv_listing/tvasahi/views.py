@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import CommentCreateForm, CommentUpdateForm, SearchForm
-from .models import Tv, Date
+from .models import Tv, Date, Comment
 from django.db.models import Q
 
 
@@ -12,7 +12,6 @@ from django.db.models import Q
 class Home(generic.ListView):
     model = Date
     template_name = 'tvasahi/home.html'
-
 
 
 class TvListView(generic.ListView):
@@ -31,10 +30,30 @@ class TvDetailView(generic.DetailView):
     template_name = 'tvasahi/tv_detail.html'
 
 
-"""
 class CommentCreateView(generic.CreateView):
+    model = Comment
+    template_name = 'tvasahi/comment_create.html'
+    form_class = CommentCreateForm
+    success_url = reverse_lazy('tvasahi:tv_detail')
+
+    def form_valid(self, form):
+        # form.save(commit=False) データベースにはまだ保存しない
+        # commit=False　ビューでモデルのフィールドを埋めるために使う引数
+        comment = form.save(commit=False)
+
+        # commentモデルのtargetフィールドをここで埋める
+        # モデル名.objects.get(フィールド=値) 1つだけDBから取り出すのに使うメソッドがget
+        # url内の<int:pk>はself.kwargs['pk']で取得できる
+        comment.target = Tv.objects.get(pk=self.kwargs['pk'])
+
+        # 上2行をまとめてこう書かれている場合も多い
+        # form.instance.target = Article.objects.get(pk=self.kwargs['pk'])
+
+        comment.save()
+        return redirect('tvasahi:tv_detail', self.kwargs['pk'])
 
 
+"""
 class CommentListView(generic.ListView):
 
 

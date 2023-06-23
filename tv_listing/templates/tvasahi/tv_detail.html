@@ -25,10 +25,13 @@
     {% for comment in tv.comment_set.all %}
 
         <div>
-            <h4>{{ comment.name }}</h4>
-            <p>{{ comment.text | linebreaks }}</p>
+            <h4>{{ comment.user_name }}</h4>
+            <p>{{ comment.comment | linebreaks }}</p>
         </div>
         <hr>
     {% endfor %}
+
+<a href="{% url 'tvasahi:comment_create' tv.id %}">コメント投稿</a>
+
 
 {% endblock %}
