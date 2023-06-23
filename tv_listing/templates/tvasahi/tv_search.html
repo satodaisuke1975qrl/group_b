@@ -11,6 +11,7 @@
 <div>
     {% for tv in tv_list %}
         <a href="{% url 'tvasahi:tv_detail' tv.pk%}">{{ tv.program_name }}</a>
+        <br>
     {% endfor %}
 </div>
 
