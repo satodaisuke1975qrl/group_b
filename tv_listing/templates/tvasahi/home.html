@@ -3,5 +3,8 @@
 {% block content %}
 
 <h1>ホーム</h1>
+{% for date in date_list %}
+    <button onclick="location.href='{% url 'tvasahi:tv_list' date.pk %}'">{{date.on_air_date}}</button>
+{% endfor %}
 
 {% endblock %}
