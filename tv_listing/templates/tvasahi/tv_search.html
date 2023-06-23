@@ -8,10 +8,13 @@
   <button type="submit">検索</button>
 </form>
 
-<div>
-    {% for tv in tv_list %}
+<h3>検索結果</h3>
+
+{% for tv in tv_list %}
+    <div>
         <a href="{% url 'tvasahi:tv_detail' tv.pk%}">{{ tv.program_name }}</a>
-    {% endfor %}
-</div>
+    </div>
+    <br>
+{% endfor %}
 
 {% endblock %}
