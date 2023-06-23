@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_div }}
+  <button type="submit">送信</button>
+</form>
+
+{% endblock %}
