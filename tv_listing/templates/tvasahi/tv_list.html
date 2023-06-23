@@ -13,7 +13,7 @@
           {{ tv.program_name }}
         </a>
     {% endif %}
-<!--　<button onclick="location.href='{% url "blog:article_detail" tv.id %}'" type="submit">詳細ページ</button>-->
+<!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
     <a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a>
   {% endfor %}
 {% endblock %}
