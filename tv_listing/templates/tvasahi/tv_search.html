@@ -11,10 +11,11 @@
 <h3>検索結果</h3>
 
 {% for tv in tv_list %}
-    <div>
-        <a href="{% url 'tvasahi:tv_detail' tv.pk %}">{{ tv.program_name }}</a>
-    </div>
-    <br>
+    <table class="list">
+        <tr>
+            <td><a href="{% url 'tvasahi:tv_detail' tv.pk %}">{{ tv.program_name }}</a></td>
+        </tr>
+    </table>
 {% endfor %}
 
 {% endblock %}
