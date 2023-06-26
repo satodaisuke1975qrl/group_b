@@ -120,11 +120,34 @@
             border-color: #333;
         }
 
+
         .btndetail a:hover {
             background-color: #c71585;
         }
 
         .btndetail a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .back a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 0 0 2px 2px;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .back a:hover {
+            background-color: #c71585;
+        }
+
+        .back a:hover::after {
             border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 

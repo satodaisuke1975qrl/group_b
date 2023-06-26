@@ -13,6 +13,7 @@
 {% for tv in tv_list %}
     <table class="list">
         <tr>
+            <th>{{ tv.date.on_air_date }}</th>
             <td><a href="{% url 'tvasahi:tv_detail' tv.pk %}">{{ tv.program_name }}</a></td>
         </tr>
     </table>
