@@ -59,4 +59,4 @@ class Comment(models.Model):
 
 
 class CustomUser(AbstractUser):
-    pass
+    email = models.EmailField('メールアドレス', unique=True)
