@@ -1,12 +1,201 @@
-{%  extends 'base.html' %}
-{% block content %}
-<body>
-    <h2>ログインページ</h2>
-    <form method="POST">
-    {% csrf_token %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}tv asahi 番組表{% endblock %}</title>   <link href="../static/css/base.css" rel="stylesheet" type="text/css">
 
-    {{ form.as_p }}
-    <input type="submit" id="save" value="ログイン">
-</form>
+    <style type="text/css">
+
+        body{
+            background: #eeeeee;
+        }
+
+        img.logo{
+            width: 180px;
+            height: 90px;
+        }
+
+        img.search{
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+        }
+
+        table.detail{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.detail tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.detail tr:last-child{
+          border-bottom: none;
+        }
+
+        table.detail th{
+          position: relative;
+          text-align: left;
+          width: 15%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.detail td{
+          text-align: left;
+          width: 85%;
+          text-align: center;
+          background-color: #ffdeff;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        table.list{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.list tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.list tr:last-child{
+          border-bottom: none;
+        }
+
+        table.list th{
+          position: relative;
+          text-align: left;
+          width: 10%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.list td{
+          text-align: left;
+          width: 90%;
+          text-align: center;
+          background-color: #ffdeff;
+          padding: 10px 0;
+          font-size: 14px;
+          font-weight: 700;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        .btn a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.1s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+        .btn a:hover {
+            color: white;
+        }
+
+        .btndetail a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .btndetail a:hover {
+            background-color: #c71585;
+        }
+
+        .btndetail a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .back a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 0 0 2px 2px;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .back a:hover {
+            background-color: #c71585;
+        }
+
+        .back a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .btn2 a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 25px;
+            right: 110px;
+            width: 140px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+        .btn2 a:hover{
+            color: white;
+            background-color: #c71585;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div style="display: flex; justify-content: space-between; background: white;">
+    <a href="{% url 'tvasahi:home' %}">
+        <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
+    </a>
+</div>
+
+
+<h2 style="display: flex; justify-content: center;">ログインページ</h2>
+<div style="display: flex; justify-content: center;">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="display: flex; justify-content: center;">
+            <input type="submit" id="save" value="ログイン" style="left: 50px;">
+        </div>
+    </form>
+</div>
+
 </body>
-{% endblock %}
+</html>
