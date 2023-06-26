@@ -1,0 +1,21 @@
+{%  extends 'base.html' %}
+{% block content %}
+
+{{ customuser.username }}
+{{ customuser.email }}
+{{ customuser.favorite_category }}
+<!--    {% for comment in comment_list %}-->
+<!--    <div>-->
+<!--        {{ tv.get_time_hour_and_minute }}-->
+<!--        {% if tv.url == null %}-->
+<!--            {{ tv.program_name }}-->
+<!--        {% else %}-->
+<!--            <a href="{{ tv.url }}">{{ tv.program_name }}</a>-->
+<!--        {% endif %}-->
+<!--        &lt;!&ndash;　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>&ndash;&gt;-->
+<!--        <a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--  {% endfor %}-->
+
+{% endblock %}
