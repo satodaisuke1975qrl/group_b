@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import CommentCreateForm, CommentUpdateForm, SearchForm
-from .models import Tv, Date, Comment
+from .models import Tv, Date, Comment, CustomUser
 from django.db.models import Q
+
+# ログインとログアウト
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.base import TemplateView
 
 
 # # Create your views here.
@@ -97,3 +101,12 @@ class SearchView(generic.ListView):
             queryset = queryset.filter(category=category)
 
         return queryset
+
+
+class Login(LoginView):
+    template_name = 'tvasahi/login.html'
+
+
+class Logout(LogoutView):
+    template_name = 'tvasahi/logout.html'
+
