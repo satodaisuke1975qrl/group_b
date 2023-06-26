@@ -10,10 +10,6 @@
             background: #eeeeee;
         }
 
-        img{
-           display: flex;
-        }
-
         img.logo{
             width: 180px;
             height: 90px;
@@ -41,7 +37,7 @@
         table.detail th{
           position: relative;
           text-align: left;
-          width: 30%;
+          width: 15%;
           background-color: #ff0099;
           color: white;
           text-align: center;
@@ -50,9 +46,9 @@
 
         table.detail td{
           text-align: left;
-          width: 70%;
+          width: 85%;
           text-align: center;
-          background-color: #FFDDFF;
+          background-color: #ffdeff;
           padding: 10px 0;
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
@@ -84,7 +80,7 @@
           text-align: left;
           width: 90%;
           text-align: center;
-          background-color: #FFDDFF;
+          background-color: #ffdeff;
           padding: 10px 0;
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
@@ -94,7 +90,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            width: 250px;
+            width: 155px;
             height: 50px;
             color: #333;
             font-size: 14px;
@@ -123,12 +119,35 @@
         }
 
         .btndetail a:hover {
-            background-color: #660000;
+            background-color: #c71585;
             border: 1px solid #333;
         }
 
         .btndetail a:hover::after {
             border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .btn2 a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 25px;
+            right: 110px;
+            width: 140px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+
+        .btn2 a:hover{
+            color: white;
         }
 
     </style>
@@ -139,6 +158,9 @@
     <a href="{% url 'tvasahi:home' %}">
         <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
     </a>
+    <div style="margin-right: auto" class="btn2">
+        <a href="">マイページへ</a>
+    </div>
     <a href="{% url 'tvasahi:tv_search' %}">
         <img src="/static/picture/search.png" class="search">
     </a>
