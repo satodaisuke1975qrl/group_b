@@ -7,32 +7,40 @@
     <style type="text/css">
 
         body{
-        background: #eeeeee;
+            background: #eeeeee;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        img{
+           display: flex;
         }
 
         img.logo{
-        width: 180px;
-        height: 90px;
+            width: 180px;
+            height: 90px;
         }
 
         img.search{
-        width: 40px;
-        height: 40px;
-        margin: 0 0 0 auto;
+            width: 90px;
+            height: 90px;
         }
 
     </style>
 </head>
 
 <body>
-    <div>
-        <a href="https://seekvectorlogo.com/tv-asahi-logo-vector-svg/" target="_blank">
-            <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
-        </a>
-        <a href="{% url 'tvasahi:tv_search' %}">
-            <img src="/static/picture/search.png" class="search">
-        </a>
-    </div>
+<div>
+    <a href="https://seekvectorlogo.com/tv-asahi-logo-vector-svg/" target="_blank">
+        <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
+    </a>
+    <a href="{% url 'tvasahi:tv_search' %}">
+        <img src="/static/picture/search.png" class="search">
+    </a>
+</div>
 
     <main>
         {% block content %}
