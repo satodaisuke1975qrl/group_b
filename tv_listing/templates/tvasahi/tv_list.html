@@ -1,7 +1,12 @@
 {%  extends 'base.html' %}
 {% block content %}
 
-<h1>番組一覧</h1>
+
+
+    {% for tv in tv_list|slice:":1" %}
+        <h1>{{ tv.date.on_air_date }} 番組一覧</h1>
+    {% endfor %}
+
 
     {% for tv in tv_list %}
     <table class="list">
