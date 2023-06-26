@@ -10,11 +10,6 @@
             background: #eeeeee;
         }
 
-        div{
-            display: flex;
-            justify-content: space-between;
-        }
-
         img{
            display: flex;
         }
@@ -25,16 +20,123 @@
         }
 
         img.search{
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+        }
+
+        table.detail{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.detail tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.detail tr:last-child{
+          border-bottom: none;
+        }
+
+        table.detail th{
+          position: relative;
+          text-align: left;
+          width: 30%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.detail td{
+          text-align: left;
+          width: 70%;
+          text-align: center;
+          background-color: #FFDDFF;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        table.list{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.list tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.list tr:last-child{
+          border-bottom: none;
+        }
+
+        table.list th{
+          position: relative;
+          text-align: left;
+          width: 10%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.list td{
+          text-align: left;
+          width: 90%;
+          text-align: center;
+          background-color: #FFDDFF;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        .btn a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 250px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+        .btn a:hover {
+            color: white;
+        }
+
+        .btndetail a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            border-color: #333;
+        }
+
+        .btndetail a:hover {
+            background-color: #660000;
+            border: 1px solid #333;
+        }
+
+        .btndetail a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 
     </style>
 </head>
 
 <body>
-<div>
-    <a href="https://seekvectorlogo.com/tv-asahi-logo-vector-svg/" target="_blank">
+<div style="display: flex; justify-content: space-between; background: white;">
+    <a href="{% url 'tvasahi:home' %}">
         <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
     </a>
     <a href="{% url 'tvasahi:tv_search' %}">

@@ -3,35 +3,44 @@
 {% block content %}
     <h1>番組詳細</h1>
 
-    <h3>放送日</h3>
-        <p>{{ tv.date.on_air_date }}</p>
+    <table class="detail">
+        <tr>
+            <th>放送日</th>
+            <td>{{ tv.date.on_air_date }}</td>
+        </tr>
+        <tr>
+            <th>放送時間</th>
+            <td>{{ tv.get_time_hour_and_minute }}</td>
+        </tr>
+        <tr>
+            <th>タイトル</th>
+            <td>{{ tv.program_name }}</td>
+        </tr>
+        <tr>
+            <th>番組内容</th>
+            <td>{{ tv.content }}</td>
+        </tr>
+        <tr>
+            <th>カテゴリ</th>
+            <td>{{ tv.category }}</td>
+        </tr>
+    </table>
 
-    <h3>放送時間</h3>
-        <p>{{ tv.get_time_hour_and_minute }}</p>
-
-    <h3>タイトル</h3>
-        <p>{{ tv.program_name }}</p>
-
-    <h3>番組内容</h3>
-        <p>{{ tv.content }}</p>
-
-    <h3>カテゴリ</h3>
-        <p>{{ tv.category }}</p>
-
-
-    <h1>コメント欄
-
-    </h1>
+    <h1>コメント欄</h1>
     {% for comment in tv.comment_set.all %}
 
+        <h4>{{ comment.user_name }}</h4>
+
         <div>
-            <h4>{{ comment.user_name }}</h4>
             <p>{{ comment.comment | linebreaks }}</p>
         </div>
         <hr>
     {% endfor %}
 
-<a href="{% url 'tvasahi:comment_create' tv.id %}">コメント投稿</a>
+    <div class="btn btndetail">
+        <a href="{% url 'tvasahi:comment_create' tv.id %}">コメント投稿</a>
+    </div>
+
 
 
 {% endblock %}
