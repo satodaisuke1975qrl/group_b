@@ -15,7 +15,7 @@
             {% if tv.url == null %}
                 <td>{{ tv.program_name }}</td>
             {% else %}
-                <td><a href="{{ tv.url }}">{{ tv.program_name }}</a></td>
+                <td><a href="{{ tv.url }}" target="_blank">{{ tv.program_name }}</a></td>
             {% endif %}
             <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
             <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
