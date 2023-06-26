@@ -159,9 +159,18 @@
     <a href="{% url 'tvasahi:home' %}">
         <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
     </a>
-    <div style="margin-right: auto" class="btn2">
-        <a href="">マイページへ</a>
-    </div>
+
+    {% if request.user.is_authenticated %}
+        <div style="margin-right: auto" class="btn2">
+            <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+        </div>
+    {% else %}
+        <div style="margin-right: auto" class="btn2">
+            <a href="{% url 'tvasahi:login' %}">ログイン</a>
+        </div>
+    {% endif %}
+
+
     <a href="{% url 'tvasahi:tv_search' %}">
         <img src="/static/picture/search.png" class="search">
     </a>
