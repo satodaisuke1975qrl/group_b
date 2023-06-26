@@ -129,3 +129,5 @@ AUTH_USER_MODEL = 'tvasahi.CustomUser'
 
 LOGIN_REDIRECT_URL = 'tvasahi:home'
 
+LOGIN_URL = 'tvasahi:login'
+

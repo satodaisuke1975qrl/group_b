@@ -35,7 +35,7 @@
     <h1>コメント欄</h1>
     {% for comment in tv.comment_set.all %}
 
-        <h4>{{ comment.user_name }}</h4>
+        <h4>{{ comment.user.username }}</h4>
 
         <div>
             <p>{{ comment.comment | linebreaks }}</p>
