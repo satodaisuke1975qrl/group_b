@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy
-from .forms import CommentCreateForm, CommentUpdateForm, SearchForm
+from .forms import CommentCreateForm, CommentUpdateForm, SearchForm, CustomUserCreationForm
 from .models import Tv, Date, Comment, CustomUser
 from django.db.models import Q
 
@@ -109,4 +109,12 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     template_name = 'tvasahi/logout.html'
+
+
+class CustomUserCreationView(generic.CreateView):
+    Model = CustomUser
+    form_class = CustomUserCreationForm
+    template_name = 'tvasahi/user_create.html'
+    success_url = reverse_lazy('tvasahi:home')
+
 
