@@ -6,13 +6,13 @@ from django.contrib.auth.forms import UserCreationForm
 class CommentCreateForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("user_name", "comment",)
+        fields = ("comment",)
 
 
 class CommentUpdateForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("user_name", "comment",)
+        fields = ("comment",)
 
 
 class SearchForm(forms.Form):
