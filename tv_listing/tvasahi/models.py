@@ -60,3 +60,4 @@ class Comment(models.Model):
 
 class CustomUser(AbstractUser):
     email = models.EmailField('メールアドレス', unique=True)
+    favorite_category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='好きな番組カテゴリ', null=True)
