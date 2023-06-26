@@ -9,6 +9,10 @@ from django.db.models import Q
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.base import TemplateView
 
+# マイページ
+from django.contrib.auth import get_user_model  # 追加
+from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
+
 
 # # Create your views here.
 #
@@ -118,4 +122,18 @@ class CustomUserCreationView(generic.CreateView):
     success_url = reverse_lazy('tvasahi:home')
 
 
+# 自分しかアクセスできないようにする
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
 
+    def test_func(self):
+        # 今ログインしてるユーザーのpkと、そのマイページのpkが同じなら許可
+        user = self.request.user
+        return user.pk == self.kwargs['pk']
+
+
+# マイページ
+class MyPage(OnlyYouMixin, generic.DetailView):
+    model = CustomUser
+    template_name = 'tvasahi/mypage.html'
+    # モデル名小文字(user)でモデルインスタンスがテンプレートファイルに渡される
