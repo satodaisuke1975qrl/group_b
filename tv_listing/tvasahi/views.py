@@ -118,3 +118,4 @@ class CustomUserCreationView(generic.CreateView):
     success_url = reverse_lazy('tvasahi:home')
 
 
+
