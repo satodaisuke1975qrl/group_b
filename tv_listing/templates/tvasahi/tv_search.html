@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>番組を検索</h2>
+<h1>番組を検索</h1>
 
 <form action="" method="GET">
   {{ form }}
@@ -12,7 +12,7 @@
 
 {% for tv in tv_list %}
     <div>
-        <a href="{% url 'tvasahi:tv_detail' tv.pk%}">{{ tv.program_name }}</a>
+        <a href="{% url 'tvasahi:tv_detail' tv.pk %}">{{ tv.program_name }}</a>
     </div>
     <br>
 {% endfor %}
