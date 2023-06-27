@@ -51,6 +51,10 @@ class TvListView(generic.ListView):
         # 降順
         # queryset.sort(key=a, reverse=True)
         context['tv_list'] = queryset
+
+        date_list = Date.objects.all()
+        context['date_list'] = date_list
+
         return context
 
 
