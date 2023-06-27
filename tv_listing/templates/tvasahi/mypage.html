@@ -38,7 +38,7 @@
 <br>
 
 
-<div class="btn" style="display: flex; justify-content: space-around;">
+<div class="btn btndetail" style="display: flex; justify-content: space-around;">
     <a href="{% url 'tvasahi:user_update' customuser.pk %}" >更新ページへ</a>
     <a href="#" onclick="msgdsp1(); return false;">ログアウト</a>
     <form name="delete" method="post" action="{% url 'tvasahi:user_delete' customuser.pk %}">
