@@ -21,6 +21,13 @@ class Home(generic.ListView):
     model = Date
     template_name = 'tvasahi/home.html'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        date = Date.objects.get(on_air_date='6/30')
+        tv_list = Tv.objects.filter(date=date)
+        context['tv_list'] = tv_list
+        return context
+
 
 def a(obj):
     hour,minits = obj.time.split(':')
@@ -43,6 +50,17 @@ class TvListView(generic.ListView):
         # queryset.sort(key=a, reverse=True)
         context['tv_list'] = queryset
         return context
+
+
+class TvListHomeView(generic.ListView):
+    model = Tv
+    template_name = 'tvasahi/home.html'
+
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     date = Date.objects.get(pk=self.kwargs['pk'])
+    #     queryset = queryset.filter(date=date)
+    #     return queryset
 
 
 class TvDetailView(generic.DetailView):

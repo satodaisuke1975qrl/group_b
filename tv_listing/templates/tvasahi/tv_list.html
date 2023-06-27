@@ -8,19 +8,21 @@
     {% endfor %}
 
     {% for tv in tv_list %}
-        <table class="list">
-            <tr>
-                <th>{{ tv.get_time_hour_and_minute }}</th>
-                {% if tv.url == null %}
-                    <td>{{ tv.program_name }}</td>
-                {% else %}
-                    <td><a href="{{ tv.url }}">{{ tv.program_name }}</a></td>
-                {% endif %}
-                <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
-                <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
-            </tr>
-        </table>
-        <br>
-    {% endfor %}
+
+    <table class="list">
+        <tr>
+            <th>{{ tv.get_time_hour_and_minute }}</th>
+            {% if tv.url == null %}
+                <td>{{ tv.program_name }}</td>
+            {% else %}
+                <td><a href="{{ tv.url }}" target="_blank">{{ tv.program_name }}</a></td>
+            {% endif %}
+            <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
+            <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
+        </tr>
+    </table>
+    <br>
+  {% endfor %}
+
 
 {% endblock %}

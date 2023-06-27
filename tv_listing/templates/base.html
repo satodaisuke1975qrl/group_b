@@ -120,11 +120,34 @@
             border-color: #333;
         }
 
+
         .btndetail a:hover {
             background-color: #c71585;
         }
 
         .btndetail a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .back a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 0 0 2px 2px;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .back a:hover {
+            background-color: #c71585;
+        }
+
+        .back a:hover::after {
             border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 
@@ -159,9 +182,18 @@
     <a href="{% url 'tvasahi:home' %}">
         <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
     </a>
-    <div style="margin-right: auto" class="btn2">
-        <a href="">マイページへ</a>
-    </div>
+
+    {% if request.user.is_authenticated %}
+        <div style="margin-right: auto" class="btn2">
+            <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+        </div>
+    {% else %}
+        <div style="margin-right: auto" class="btn2">
+            <a href="{% url 'tvasahi:login' %}">ログイン</a>
+        </div>
+    {% endif %}
+
+
     <a href="{% url 'tvasahi:tv_search' %}">
         <img src="/static/picture/search.png" class="search">
     </a>
