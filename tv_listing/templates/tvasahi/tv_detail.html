@@ -35,11 +35,18 @@
     <h1>コメント欄</h1>
     {% for comment in tv.comment_set.all %}
 
-        <h4>{{ comment.user_name.username }}</h4>
+        <h4>{{ comment.user_name.username }}:{{ comment.pub_date|date:"Y年m月d日h時i分s秒" }}</h4>
 
         <div>
             <p>{{ comment.comment | linebreaks }}</p>
         </div>
+
+        {% if comment.user_name.username == user.username %}
+            <form name="delete{{ comment.pk }}" method="post" action="{% url 'tvasahi:comment_delete' comment.pk %}">
+                {% csrf_token %}
+                <button type="button" class="btn btn-danger" onclick="msgdsp('delete{{ comment.pk }}')" >削除</button>
+            </form>
+        {% endif %}
         <hr>
     {% endfor %}
 
@@ -49,4 +56,18 @@
 
 
 
+{% endblock %}
+
+{% block extra_js %}
+
+  <script>
+    function msgdsp(name){
+    var confirmDelete = confirm('本当に削除しますか？');
+      if (confirmDelete) {
+        const form = document.getElementsByName(name)[0]
+        form.submit()
+      }
+    }
+
+  </script>
 {% endblock %}

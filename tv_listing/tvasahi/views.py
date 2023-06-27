@@ -10,7 +10,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.base import TemplateView
 
 # マイページ
-from django.contrib.auth import get_user_model, logout  # 追加
+from django.contrib.auth import get_user_model, logout, login, authenticate  # 追加
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib import messages
 
@@ -105,11 +105,24 @@ class CommentListView(generic.ListView):
 
 class CommentUpdateView(generic.UpdateView):
 
+"""
+
+
+# class CommentDeleteView(generic.DeleteView):
+#     model = Comment
+#     success_url = reverse_lazy('tvasahi:tv_detail')
+#
+#     def get_success_url(self):
+#         return resolve_url('tvasahi:tv_detail', pk=self.kwargs['pk'])
 
 class CommentDeleteView(generic.DeleteView):
+    model = Comment
+    success_url = reverse_lazy('tvasahi:tv_detail')
+
+    def get_success_url(self):
+        return resolve_url('tvasahi:tv_detail', self.object.target.pk)
 
 
-"""
 
 
 class SearchView(generic.ListView):
@@ -163,6 +176,14 @@ class CustomUserCreationView(generic.CreateView):
     form_class = CustomUserCreationForm
     template_name = 'tvasahi/user_create.html'
     success_url = reverse_lazy('tvasahi:home')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=password)
+        login(self.request, user)
+        return response
 
 
 # 自分しかアクセスできないようにする
