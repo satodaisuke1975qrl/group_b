@@ -5,11 +5,14 @@
         <h1>{{ tv.date.on_air_date }} 番組一覧</h1>
     {% endfor %}
 
+
     {% for date in date_list %}
         <a href="{% url 'tvasahi:tv_list' date.pk %}" class="home">{{ date.on_air_date }}</a>
     {% endfor %}
 
+
     {% for tv in tv_list %}
+
     <table class="list">
         <tr>
             <th>{{ tv.get_time_hour_and_minute }}</th>
@@ -24,5 +27,6 @@
     </table>
     <br>
   {% endfor %}
+
 
 {% endblock %}
