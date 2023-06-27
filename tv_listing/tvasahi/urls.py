@@ -16,4 +16,5 @@ urlpatterns = [
     path('mypage/<int:pk>/', views.MyPage.as_view(), name='mypage'),
     path('user_update/<int:pk>/', views.UserUpdate.as_view(), name='user_update'),
     path('logout/', views.Logout.as_view(), name='logout'),
+    path('user_delete/<int:pk>/', views.CustomUserDeleteView.as_view(), name='user_delete')
     ]
