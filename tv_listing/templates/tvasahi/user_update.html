@@ -1,0 +1,12 @@
+{%  extends 'base.html' %}
+{% block content %}
+<body>
+    <h2>ユーザー情報更新ページ</h2>
+    <form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" id="save" value="更新">
+</form>
+</body>
+{% endblock %}

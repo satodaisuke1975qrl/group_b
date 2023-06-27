@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from django.views import generic
 from django.urls import reverse_lazy
-from .forms import CommentCreateForm, CommentUpdateForm, SearchForm, CustomUserCreationForm
+from .forms import CommentCreateForm, CommentUpdateForm, SearchForm, CustomUserCreationForm, UserUpdateForm
 from .models import Tv, Date, Comment, CustomUser
 from django.db.models import Q
 
@@ -66,6 +66,7 @@ class CommentCreateView(generic.CreateView):
         # form.save(commit=False) データベースにはまだ保存しない
         # commit=False　ビューでモデルのフィールドを埋めるために使う引数
         comment = form.save(commit=False)
+        comment.user_name = self.request.user
 
         # commentモデルのtargetフィールドをここで埋める
         # モデル名.objects.get(フィールド=値) 1つだけDBから取り出すのに使うメソッドがget
@@ -132,6 +133,11 @@ class Login(LoginView):
 class Logout(LogoutView):
     template_name = 'tvasahi/logout.html'
 
+    def get(self, request):
+        logout(request)
+        messages.success(request, 'ログアウトしました。')
+        return redirect('tvasahi:home')
+
 
 class CustomUserCreationView(generic.CreateView):
     Model = CustomUser
@@ -155,3 +161,12 @@ class MyPage(OnlyYouMixin, generic.DetailView):
     model = CustomUser
     template_name = 'tvasahi/mypage.html'
     # モデル名小文字(user)でモデルインスタンスがテンプレートファイルに渡される
+
+
+class UserUpdate(OnlyYouMixin, generic.UpdateView):
+    model = CustomUser
+    form_class = UserUpdateForm
+    template_name = 'tvasahi/user_update.html'
+
+    def get_success_url(self):
+        return resolve_url('tvasahi:mypage', pk=self.kwargs['pk'])
