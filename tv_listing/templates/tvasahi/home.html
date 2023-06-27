@@ -3,28 +3,23 @@
 {% block content %}
 
 <h1>ホーム</h1>
-{% for date in date_list %}
-    <button onclick="location.href='{% url 'tvasahi:tv_list' date.pk %}'">{{date.on_air_date}}</button>
+    {% for date in date_list %}
+        <a href="{% url 'tvasahi:tv_list' date.pk %}" class="home">{{ date.on_air_date }}</a>
+    {% endfor %}
+
+{% for tv in tv_list %}
+    <table class="list">
+        <tr>
+            <th>{{ tv.get_time_hour_and_minute }}</th>
+                {% if tv.url == null %}
+                    <td>{{ tv.program_name }}</td>
+                {% else %}
+                    <td><a href="{{ tv.url }}" target="_blank">{{ tv.program_name }}</a></td>
+                {% endif %}
+                <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
+                <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
+        </tr>
+    </table>
 {% endfor %}
-
-
-
-        {% for tv in tv_list %}
-            <table class="list">
-                <tr>
-                    <th>{{ tv.get_time_hour_and_minute }}</th>
-                    {% if tv.url == null %}
-                        <td>{{ tv.program_name }}</td>
-                    {% else %}
-                        <td><a href="{{ tv.url }}" target="_blank">{{ tv.program_name }}</a></td>
-                    {% endif %}
-                    <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
-                    <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
-                </tr>
-            </table>
-            <br>
-        {% endfor %}
-
-
 
 {% endblock %}

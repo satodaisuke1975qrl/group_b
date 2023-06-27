@@ -1,12 +1,13 @@
 {%  extends 'base.html' %}
 {% block content %}
 
-
-
     {% for tv in tv_list|slice:":1" %}
         <h1>{{ tv.date.on_air_date }} 番組一覧</h1>
     {% endfor %}
 
+    {% for date in date_list %}
+        <a href="{% url 'tvasahi:tv_list' date.pk %}" class="home">{{ date.on_air_date }}</a>
+    {% endfor %}
 
     {% for tv in tv_list %}
     <table class="list">
