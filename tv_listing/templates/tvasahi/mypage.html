@@ -38,16 +38,16 @@
 <br>
 
 
-<div class="btn btndetail" style="display: flex; justify-content: space-around;">
+<div class="btn" style="display: flex; justify-content: space-around;">
     <a href="{% url 'tvasahi:user_update' customuser.pk %}" >更新ページへ</a>
-    <a href="msgdsp1()" >ログアウト</a>
+    <input type="button" onclick="msgdsp1()" value="ログアウト">
+<!--    <a href="{% url 'tvasahi:home' %}" onclick="msgdsp1()">ログアウト</a>-->
 
     <form name="delete" method="post" action="{% url 'tvasahi:user_delete' customuser.pk %}">
         {% csrf_token %}
-        <a href="msqdsp2()" >削除</a>
+    <button type="button" class="btn btn-danger" onclick="msgdsp2()" >削除</button>
     </form>
 </div>
-
 <!--<input type="button" onclick="msgdsp2()" value="削除">-->
 
 {% endblock %}
