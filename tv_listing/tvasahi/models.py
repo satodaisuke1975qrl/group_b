@@ -52,7 +52,7 @@ class Comment(models.Model):
     comment = models.TextField('コメント内容')
     target = models.ForeignKey(Tv, on_delete=models.PROTECT, verbose_name='紐付く番組名')
     # 登録日時
-    pub_date = models.DateTimeField(u'登録日時', auto_now_add=True, editable=False)
+    pub_date = models.DateTimeField('登録日時', auto_now_add=True)
 
     def __str__(self):
         return self.comment[:20]
