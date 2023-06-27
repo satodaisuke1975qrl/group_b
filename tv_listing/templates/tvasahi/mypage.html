@@ -2,9 +2,25 @@
 {% block content %}
 
 <h2>マイページ</h2>
-<p>ユーザー名：{{ customuser.username }}</p>
-<p>メールアドレス：{{ customuser.email }}</p>
-<p>好きな番組ジャンル：{{ customuser.favorite_category }}</p>
+    <table class="detail">
+        <tr>
+            <th>ユーザー名</th>
+            <td>{{ customuser.username }}</td>
+        </tr>
+    </table>
+    <table class="detail">
+        <tr>
+            <th>メールアドレス</th>
+            <td>{{ customuser.email }}</td>
+        </tr>
+    </table>
+    <table class="detail">
+        <tr>
+            <th>好きな番組ジャンル</th>
+            <td>{{ customuser.favorite_category }}</td>
+        </tr>
+    </table>
+
 <!--    {% for comment in comment_list %}-->
 <!--    <div>-->
 <!--        {{ tv.get_time_hour_and_minute }}-->
@@ -18,6 +34,13 @@
 <!--    </div>-->
 <!--    <br>-->
 <!--  {% endfor %}-->
+
+<br>
+
+<div class="btn btndetail" style="display: flex; justify-content: center;">
+    <a href="{% url 'tvasahi:user_update' customuser.pk %}">更新</a>
+</div>
+
 
 
 <input type="button" onclick="location.href='{% url 'tvasahi:user_update' customuser.pk %}'" value="更新ページへ">
