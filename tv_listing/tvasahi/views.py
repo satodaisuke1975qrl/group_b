@@ -23,7 +23,9 @@ class Home(generic.ListView):
 
 
 def a(obj):
-    hour,minits = obj.time.split(':')
+    hour_and_minits = obj.time.split(':')
+    hour = hour_and_minits[0]
+    minits = hour_and_minits[1]
     return int(hour),int(minits)
 
 
