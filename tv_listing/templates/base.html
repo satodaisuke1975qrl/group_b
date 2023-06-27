@@ -201,11 +201,21 @@
             color: #ff0099;
             border-radius: 100vh;
             transition: 0.1s;
+            custer: pointer;
         }
 
         .home:hover{
-            color: #fff;
             background: #ff0099;
+            color: #fff;
+        }
+
+        .home input:checked+label{
+            background: #ff0099;
+            color: #fff;
+        }
+
+        .home input{
+            display: none;
         }
 
         #home_background{

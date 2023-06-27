@@ -3,11 +3,11 @@
 {% block content %}
 
 <h1>ホーム</h1>
-    <div>
-    {% for date in date_list %}
-        <a href="{% url 'tvasahi:tv_list' date.pk %}" class="home">{{ date.on_air_date }}</a>
-    {% endfor %}
+{% for date in date_list %}
+    <div class="home">
+        <input type="radio" name=""><a href="{% url 'tvasahi:tv_list' date.pk %}" style="color: inherit; text-decoration: none;">{{ date.on_air_date }}</a>
     </div>
+{% endfor %}
 
 {% for tv in tv_list %}
     <table class="list">
@@ -16,7 +16,7 @@
                 {% if tv.url == null %}
                     <td>{{ tv.program_name }}</td>
                 {% else %}
-                    <td><a href="{{ tv.url }}" target="_blank">{{ tv.program_name }}</a></td>
+                    <td><a href="{{ tv.url }}" target="_blank" style="color: inherit; text-decoration: none;">{{ tv.program_name }}</a></td>
                 {% endif %}
                 <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
                 <td class="btn btndetail"><a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
