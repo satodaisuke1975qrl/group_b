@@ -3,9 +3,11 @@
 {% block content %}
 
 <h1>ホーム</h1>
+    <div>
     {% for date in date_list %}
         <a href="{% url 'tvasahi:tv_list' date.pk %}" class="home">{{ date.on_air_date }}</a>
     {% endfor %}
+    </div>
 
 {% for tv in tv_list %}
     <table class="list">
