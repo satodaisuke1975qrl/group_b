@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>ログアウト</h2>
+  <p>本当にログアウトしますか？</p>
+  <form method="post" action="{% url 'tvasahi:logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">ログアウト</button>
+  </form>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      var confirmLogout = confirm('本当にログアウトしますか？');
+      if (!confirmLogout) {
+        e.preventDefault();
+      }
+    });
+  </script>
+{% endblock %}
