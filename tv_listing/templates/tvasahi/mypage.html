@@ -19,6 +19,34 @@
 <!--    <br>-->
 <!--  {% endfor %}-->
 
-<a href="{% url 'tvasahi:user_update' customuser.pk %}">更新</a>
 
+<input type="button" onclick="location.href='{% url 'tvasahi:user_update' customuser.pk %}'" value="更新ページへ">
+<input type="button" onclick="msgdsp1()" value="ログアウト">
+<form name="delete" method="post" action="{% url 'tvasahi:user_delete' customuser.pk %}">
+    {% csrf_token %}
+    <button type="button" class="btn btn-danger" onclick="msgdsp2()" >削除</button>
+</form>
+<!--<input type="button" onclick="msgdsp2()" value="削除">-->
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    function msgdsp1() {
+      var confirmLogout = confirm('本当にログアウトしますか？');
+      if (confirmLogout) {
+        window.location.href = "{% url 'tvasahi:logout' %}";
+      }
+    }
+  </script>
+
+  <script>
+    function msgdsp2(){
+    var confirmDelete = confirm('本当に削除しますか？');
+      if (confirmDelete) {
+        document.delete.submit() ;
+      }
+    }
+
+  </script>
 {% endblock %}

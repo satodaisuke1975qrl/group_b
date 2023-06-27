@@ -10,8 +10,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.base import TemplateView
 
 # マイページ
-from django.contrib.auth import get_user_model  # 追加
+from django.contrib.auth import get_user_model, logout  # 追加
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
+from django.contrib import messages
 
 
 # # Create your views here.
@@ -33,7 +34,7 @@ def a(obj):
     hour_and_minits = obj.time.split(':')
     hour = hour_and_minits[0]
     minits = hour_and_minits[1]
-    return int(hour),int(minits)
+    return int(hour), int(minits)
 
 
 class TvListView(generic.ListView):
@@ -188,3 +189,9 @@ class UserUpdate(OnlyYouMixin, generic.UpdateView):
 
     def get_success_url(self):
         return resolve_url('tvasahi:mypage', pk=self.kwargs['pk'])
+
+
+class CustomUserDeleteView(generic.DeleteView):
+    template_name = 'tvasahi/user_delete.html'
+    model = CustomUser
+    success_url = reverse_lazy('tvasahi:home')
