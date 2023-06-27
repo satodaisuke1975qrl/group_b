@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>ホーム</h1>
+<h1>今日の番組一覧</h1>
 {% for date in date_list %}
     <div class="home">
         <input type="radio" name=""><a href="{% url 'tvasahi:tv_list' date.pk %}" style="color: inherit; text-decoration: none;">{{ date.on_air_date }}</a>
