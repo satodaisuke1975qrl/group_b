@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.contrib.auth.decorators import login_required
 
+
 app_name = 'tvasahi'
 
 urlpatterns = [
@@ -13,4 +14,6 @@ urlpatterns = [
     path('login/', views.Login.as_view(), name='login'),
     path('user_create/', views.CustomUserCreationView.as_view(), name='user_create'),
     path('mypage/<int:pk>/', views.MyPage.as_view(), name='mypage'),
+    path('user_update/<int:pk>/', views.UserUpdate.as_view(), name='user_update'),
+    path('logout/', views.Logout.as_view(), name='logout'),
     ]

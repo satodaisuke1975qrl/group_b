@@ -1,9 +1,10 @@
 {%  extends 'base.html' %}
 {% block content %}
 
-{{ customuser.username }}
-{{ customuser.email }}
-{{ customuser.favorite_category }}
+<h2>マイページ</h2>
+<p>ユーザー名：{{ customuser.username }}</p>
+<p>メールアドレス：{{ customuser.email }}</p>
+<p>好きな番組ジャンル：{{ customuser.favorite_category }}</p>
 <!--    {% for comment in comment_list %}-->
 <!--    <div>-->
 <!--        {{ tv.get_time_hour_and_minute }}-->
@@ -17,5 +18,7 @@
 <!--    </div>-->
 <!--    <br>-->
 <!--  {% endfor %}-->
+
+<a href="{% url 'tvasahi:user_update' customuser.pk %}">更新</a>
 
 {% endblock %}

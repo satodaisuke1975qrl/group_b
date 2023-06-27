@@ -87,6 +87,19 @@
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
 
+        table.home{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.home tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.home tr:last-child{
+          border-bottom: none;
+        }
+
         .btn a {
             display: flex;
             justify-content: center;
@@ -174,34 +187,34 @@
             background-color: #c71585;
         }
 
-        a{
-            color: #c97586;
         }
 
     </style>
 </head>
 
 <body>
-<div style="display: flex; justify-content: space-between; background: white;">
-    <a href="{% url 'tvasahi:home' %}">
-        <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
-    </a>
+    <div id="home_background">
+        <div style="display: flex; justify-content: space-between;">
+            <a href="{% url 'tvasahi:home' %}">
+                 <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/tv-asahi-vector-logo.png" class="logo"/>
+            </a>
 
-    {% if request.user.is_authenticated %}
-        <div style="margin-right: auto" class="btn2">
-            <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+            {% if request.user.is_authenticated %}
+            <div style="margin-right: auto" class="btn2">
+                <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+            </div>
+            {% else %}
+            <div style="margin-right: auto" class="btn2">
+                <a href="{% url 'tvasahi:login' %}">ログイン</a>
+            </div>
+            {% endif %}
+
+
+            <a href="{% url 'tvasahi:tv_search' %}">
+                <img src="/static/picture/search.png" class="search">
+            </a>
         </div>
-    {% else %}
-        <div style="margin-right: auto" class="btn2">
-            <a href="{% url 'tvasahi:login' %}">ログイン</a>
-        </div>
-    {% endif %}
-
-
-    <a href="{% url 'tvasahi:tv_search' %}">
-        <img src="/static/picture/search.png" class="search">
-    </a>
-</div>
+    </div>
 
     <main>
         {% block content %}
