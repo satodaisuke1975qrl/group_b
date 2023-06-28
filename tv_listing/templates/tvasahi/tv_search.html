@@ -5,30 +5,32 @@
 {% block content %}
 <h1>番組を検索</h1>
 
-<div class="">
-    <form action="" method="GET">
 
-        <div>
+<form action="" method="GET">
+    <div style="">
         キーワード :
-        <label class="search-form-011">
-            <input name="keyword" type="text" placeholder="キーワードを入力" value="{{ keyword }}">
+        <label class="search-form-011" style="">
+            <input name="keyword" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.keyword }}">
         </label>
-        </div>
 
-        カテゴリー :
+        カテゴリー :<br>
         <label class="selectbox-002">
             <select name="category">
                 <option value="" >{{ category }}選択してください</option>
                 {% for category in form.category.field.queryset %}
-                    <option value="{{ category.id }}">{{ category }}</option>
+                {% if category.id == category_value %}
+                <option value="{{ category.id }}" selected>{{ category }}</option>
+                {% else %}
+                <option value="{{ category.id }}">{{ category }}</option>
+                {% endif %}
                 {% endfor %}
             </select>
         </label>
-
+        <br>
         <button type="submit" class="search_button">検索</button>
+    </div>
+</form>
 
-    </form>
-</div>
 
 <h3>検索結果</h3>
 
