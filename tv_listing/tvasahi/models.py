@@ -63,6 +63,7 @@ class Comment(models.Model):
 
 
 class CustomUser(AbstractUser):
+    # icon = models.ImageField('アイコン画像', null=True, blank=True, upload_to='icon_images/')
     email = models.EmailField('メールアドレス', unique=True)
     address = models.CharField('住所', max_length=64, blank=False, null=False)
     favorite_category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='好きな番組カテゴリ', null=True)

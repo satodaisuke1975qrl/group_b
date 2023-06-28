@@ -40,6 +40,20 @@ class Home(generic.ListView):
         return goodss
 
 
+class GoodsRank(generic.ListView):
+    model = Goods
+    template_name = 'tvasahi/home.html'
+
+    def get_queryset(self):
+        goodss = Goods.objects.all()
+        q_name = self.request.GET.get('name')
+
+        if q_name:
+            goodss = goodss.filter(name__icontains=q_name)
+
+        return goodss
+
+
 @method_decorator(never_cache, name='dispatch')
 class ModelCartContent(OnlyYouMixin, generic.DetailView):
     model = CustomUser
