@@ -35,7 +35,7 @@
     <h1>コメント欄</h1>
     {% for comment in tv.comment_set.all %}
 
-        <h4>{{ comment.user_name.username }}:{{ comment.pub_date|date:"Y年m月d日h時i分s秒" }}</h4>
+        <h4>{{ comment.user_name.username }} : {{ comment.pub_date|date:"Y/m/d(D) h:i:s" }}</h4>
 
         <div>
             <p>{{ comment.comment | linebreaks }}</p>
