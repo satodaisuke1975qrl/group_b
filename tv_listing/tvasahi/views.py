@@ -135,9 +135,13 @@ class SearchView(generic.ListView):
         # self.request.GET で値の保持が実行される
         context['form'] = form
         category_value = form.cleaned_data.get('category')
+        favorite_category_value = form.cleaned_data.get('favorite_category')
 
         if category_value:
             context['category_value'] = category_value.id
+
+        if favorite_category_value:
+            context['favorite_category_value'] = category_value.id
 
         return context
 
