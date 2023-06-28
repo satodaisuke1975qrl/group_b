@@ -123,8 +123,6 @@ class CommentDeleteView(generic.DeleteView):
         return resolve_url('tvasahi:tv_detail', self.object.target.pk)
 
 
-
-
 class SearchView(generic.ListView):
     model = Tv
     template_name = 'tvasahi/tv_search.html'
@@ -134,7 +132,6 @@ class SearchView(generic.ListView):
 
         # self.request.GET で値の保持が実行される
         context['form'] = SearchForm(self.request.GET)
-
         return context
 
     # 条件検索

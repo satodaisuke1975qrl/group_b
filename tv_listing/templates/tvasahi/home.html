@@ -11,7 +11,7 @@
 
 {% for tv in tv_list %}
     <table class="list">
-        <tr>
+        <tr class="name-hover">
             <th>{{ tv.get_time_hour_and_minute }}</th>
                 {% if tv.url == null %}
                     <td>{{ tv.program_name }}</td>
