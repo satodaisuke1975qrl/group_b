@@ -25,7 +25,7 @@ class CartUnit(models.Model):
     quantity = models.PositiveIntegerField('購入数', default=1, blank=False, validators=[MinValueValidator(1, )])
 
     def __str__(self):
-        return '{}:{}'.format(self.goods.title, self.quantity)
+        return '{}:{}'.format(self.goods.name, self.quantity)
 
 
 class Cart(models.Model):
@@ -69,7 +69,13 @@ class Cart(models.Model):
             self._add_session_unit(cart_unit['goods_pk'], cart_unit['quantity'])
 
     def __str__(self):
-        return "{}'s model cart".format(self.user.username)
+        print(self.customuser)
+        if hasattr(self, 'customuser'):
+            return "{}'s model cart".format(self.customuser.username)
+
+        else:
+            return 'まだ紐づいていません'
+
 
 
 class Purchase(models.Model):

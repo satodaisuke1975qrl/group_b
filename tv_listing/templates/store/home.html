@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>商品リスト</h2> <button onclick="location.href='{% url 'store:modelcart_content' pk=1 %}'">カート</button>
+<h2>商品リスト</h2>
+<button onclick="location.href='{% url 'store:modelcart_content' pk=1 %}'">カート</button>
 
 
-<form method="get" id="GoodsSearchForm">
+<form action="" method="get" id="GoodsSearchForm">
 
-    <label class="search-form-011" style="">
-            <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
+    <label class="search-form-blue" style="">
+        <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
     </label>
-    <button type="submit" class="search_button">検索</button>
+    <button type="submit" class="search_button_blue">検索</button>
 
 </form>
 
