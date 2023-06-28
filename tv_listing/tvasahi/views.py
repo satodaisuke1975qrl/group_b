@@ -129,9 +129,16 @@ class SearchView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        form = SearchForm(self.request.GET)
+        form.is_valid()
 
         # self.request.GET で値の保持が実行される
-        context['form'] = SearchForm(self.request.GET)
+        context['form'] = form
+        category_value = form.cleaned_data.get('category')
+
+        if category_value:
+            context['category_value'] = category_value.id
+
         return context
 
     # 条件検索
