@@ -10,7 +10,8 @@
 {% if goods_list %}
 <ul>
     {% for goods in goods_list %}
-    <li><a href="{% url 'goods:detail' goods.pk %}">{{ goods.title }}</a></li>
+    <li><a href="{% url 'store:detail' goods.pk %}">{{ goods.name }}</a></li>
+    <li>商品画像 <img src="{{ goods.image.url }}"/></li>
     {% endfor %}
 </ul>
 
