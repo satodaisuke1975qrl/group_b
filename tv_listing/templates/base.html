@@ -366,13 +366,18 @@
             </a>
 
             {% if request.user.is_authenticated %}
-            <div style="margin-right: auto" class="btn2">
-                <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
-            </div>
+                <div style="margin-right: auto" class="btn2">
+                    <a href="{% url 'store:home' %}">
+                        <img src="/static/picture/store.jpg" class="store" width="140px" height="auto">
+                    </a>
+                </div>
+                <div style="margin-right: auto" class="btn2">
+                    <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+                </div>
             {% else %}
-            <div style="margin-right: auto" class="btn2">
-                <a href="{% url 'tvasahi:login' %}">ログイン</a>
-            </div>
+                <div style="margin-right: auto" class="btn2">
+                    <a href="{% url 'tvasahi:login' %}">ログイン</a>
+                </div>
             {% endif %}
 
 
