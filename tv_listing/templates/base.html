@@ -333,6 +333,12 @@
             outline: 1px solid #ff0099;
         }
 
+        <!-- 検索画像の設定 -->
+        .search-over img:hover{
+            opacity: 0.6;
+         	transition: 0.4s;
+        }
+
         .search_button{
           cursor: pointer;
           width: 80px;
@@ -381,7 +387,7 @@
             {% endif %}
 
 
-            <a href="{% url 'tvasahi:tv_search' %}">
+            <a class="search-over" href="{% url 'tvasahi:tv_search' %}">
                 <img src="/static/picture/search.png" class="search">
             </a>
         </div>
