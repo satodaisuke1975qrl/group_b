@@ -6,12 +6,12 @@
 
 
 <form action="" method="get" id="GoodsSearchForm">
-
-    <label class="search-form-blue" style="">
-        <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
-    </label>
-    <button type="submit" class="search_button_blue">検索</button>
-
+    <div style="display: flex; justify-content: center;">
+        <label class="search-form-blue" style="">
+            <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
+        </label>
+        <button type="submit" class="search_button_blue" style="">検索</button>
+    </div>
 </form>
 
 
