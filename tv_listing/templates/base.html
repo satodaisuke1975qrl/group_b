@@ -168,7 +168,7 @@
         }
 
         .back a:hover::after {
-            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+            border-color: transparent transparent #f2f2f2 #f2f2f2;
         }
 
         .btn2 a {
@@ -262,7 +262,7 @@
 
         .search-form-011 input {
             width: 300px;
-            height: 45px;
+            height: 50px;
             padding: 5px 15px 5px 0;
             border: none;
             box-sizing: border-box;
@@ -429,7 +429,12 @@
     </style>
 </head>
 
-<body>
+<body onload="MouseXY()">
+
+    <div id="Obj_1" style="position:absolute;">
+        <img src="../../../static/picture/gochan.png" width="40" height="34" alt="画像">
+    </div>
+
     <div id="home_background">
         <div class="menu">
             <div class="left">
@@ -470,5 +475,18 @@
         {% endblock %}
 
     </main>
+
+    <script>
+            function MouseXY() {
+                　document.addEventListener('mousemove', function(event) {
+                  var obj = document.getElementById('Obj_1');
+                  var x = event.pageX;
+                  var y = event.pageY;
+                  obj.style.left = x + 20 + 'px';
+                  obj.style.top = y - 5 + 'px';
+                });
+
+            }
+    </script>
 </body>
 </html>
