@@ -8,21 +8,28 @@
     <h2>ユーザー情報更新ページ</h2>
     <form method="POST">
         {% csrf_token %}
-
-        <label class="search-form-011">
-            <input name="username" type="text" placeholder="ユーザー名" value="{{ username }}" >
-        </label>
-        <label class="search-form-011">
-            <input name="email" type="email" placeholder="メールアドレス" value="{{ email }}">
-        </label>
-        <label class="selectbox-002">
-            <select name="favorite_category">
-                <option value="">{{ favorite_category }}選択してください</option>
-                {% for favorite_category in form.favorite_category.field.queryset %}
-                    <option value="{{ favorite_category.id }}">{{ favorite_category }}</option>
-                {% endfor %}
-            </select>
-        </label>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="username" type="text" placeholder="ユーザー名" value="{{ username }}" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="email" type="email" placeholder="メールアドレス" value="{{ email }}">
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <label class="selectbox-002">
+                <select name="favorite_category">
+                    <option value="">{{ favorite_category }}選択してください</option>
+                    {% for favorite_category in form.favorite_category.field.queryset %}
+                        <option value="{{ favorite_category.id }}">{{ favorite_category }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
         <br>
         {{ form.username.errors }}
         {{ form.email.errors }}
