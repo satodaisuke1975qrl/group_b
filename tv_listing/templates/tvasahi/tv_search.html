@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 <h1>番組を検索</h1>
 
 <div class="">
     <form action="" method="GET">
-        {{ form }}
-        <button type="submit">検索</button>
+
+        <div>
+        キーワード :
+        <label class="search-form-011">
+            <input name="keyword" type="text" placeholder="キーワードを入力" value="{{ keyword }}">
+        </label>
+        </div>
+
+        カテゴリー :
+        <label class="selectbox-002">
+            <select name="category">
+                <option value="" >{{ category }}選択してください</option>
+                {% for category in form.category.field.queryset %}
+                    <option value="{{ category.id }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <button type="submit" class="search_button">検索</button>
+
     </form>
 </div>
 
@@ -14,7 +34,7 @@
 
 {% for tv in tv_list %}
     <table class="list">
-        <tr>
+        <tr class="name-hover">
             <th>{{ tv.date.on_air_date }}</th>
             <td><a href="{% url 'tvasahi:tv_detail' tv.pk %}" style="color: inherit; text-decoration: none;">{{ tv.program_name }}</a></td>
         </tr>
