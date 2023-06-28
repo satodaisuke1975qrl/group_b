@@ -24,7 +24,7 @@ class SearchForm(forms.Form):
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'favorite_category')
+        fields = ('username', 'email', 'address', 'favorite_category')
 
 
 class UserUpdateForm(forms.ModelForm):
