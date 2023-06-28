@@ -64,7 +64,7 @@ class Comment(models.Model):
 
 class CustomUser(AbstractUser):
     email = models.EmailField('メールアドレス', unique=True)
-    address = models.CharField('住所', max_length=64, blank=True)
+    address = models.CharField('住所', max_length=64, blank=False, null=False)
     favorite_category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='好きな番組カテゴリ', null=True)
-    cart = models.OneToOneField(to='store.Cart', verbose_name='カート', on_delete=models.CASCADE, null=True)
+    cart = models.OneToOneField(to='store.Cart', verbose_name='カート', on_delete=models.CASCADE, blank=True, null=True)
 
