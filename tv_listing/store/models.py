@@ -29,6 +29,7 @@ class CartUnit(models.Model):
 
 
 class Cart(models.Model):
+    units = models.ManyToManyField(to=CartUnit, verbose_name=' ユニット', blank=True)
 
     @property
     def total_price(self):

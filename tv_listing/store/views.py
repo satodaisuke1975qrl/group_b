@@ -1,5 +1,5 @@
 
-from .forms import GoodsSearchForm
+from .forms import GoodsSearchForm, CartUnitForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .helper import OnlyYouMixin, PostOnlyYouMixin, GetOnlyYouMixin, PostOnlyYouMixin, SessionCartManager
 from tvasahi.models import CustomUser
@@ -9,6 +9,8 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.cache import never_cache
+from django.views.generic.edit import ModelFormMixin
+from .models import Cart
 
 
 class Home(generic.ListView):
@@ -42,7 +44,7 @@ class Home(generic.ListView):
 class ModelCartContent(OnlyYouMixin, generic.DetailView):
     model = CustomUser
     context_object_name = 'cart'
-    template_name = 'store/cart/contents.html'
+    template_name = 'store/contents.html'
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
@@ -60,6 +62,11 @@ class ModelAddToCart(LoginRequiredMixin, generic.RedirectView):
 
     def post(self, request, *args, **kwargs):
         user = request.user
+
+        if not user.cart:
+            user.cart = Cart.objects.create()
+            user.save()
+
         goods_pk = request.POST['goods_pk']
         quantity = request.POST['quantity']
         user.cart.add_unit(CartUnit(goods=Goods.objects.get(pk=goods_pk), quantity=int(quantity)))
@@ -83,7 +90,7 @@ class ModelCartDelete(PostOnlyYouMixin, generic.DeleteView):
 
 @method_decorator(never_cache, name='dispatch')
 class PurchasePreview(GetOnlyYouMixin, generic.TemplateView):
-    template_name = 'store/purchase/preview.html'
+    template_name = 'store/preview.html'
 
     def get_context_data(self, **kwargs):
         cart = self.request.user.cart
@@ -109,13 +116,14 @@ class PurchaseProcess(PostOnlyYouMixin, generic.FormView):
         user.cart.units.clear()
         return super().form_valid(form)
 
+
 class PurchaseDone(generic.TemplateView):
-    template_name = 'store/purchase/done.html'
+    template_name = 'store/done.html'
 
 
 @method_decorator(never_cache, name='dispatch')
 class SessionCartContent(generic.TemplateView):
-    template_name = 'store/cart/contents.html'
+    template_name = 'store/contents.html'
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data()
@@ -146,3 +154,13 @@ class SessionCartDelete(generic.FormView):
         cart = SessionCartManager.delete_unit(cart, deleting_goods_pk)
         self.request.session[SessionCartManager.kname] = cart
         return super().form_valid(form)
+
+
+class GoodsDetail(ModelFormMixin, generic.DetailView):
+    model = Goods
+    template_name = 'store/detail.html'
+    context_object_name = 'goods'
+    form_class = CartUnitForm
+
+    def form_valid(self, form):
+        return render(self.request, 'store/detail.html', {'form': form})

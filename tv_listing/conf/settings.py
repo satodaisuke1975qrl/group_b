@@ -134,5 +134,8 @@ LOGOUT_REDIRECT_URL = 'tvasahi:home'
 
 LOGIN_URL = 'tvasahi:login'
 
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = "/media/"
+
 
 
