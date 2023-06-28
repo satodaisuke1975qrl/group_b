@@ -5,9 +5,15 @@
 
 
 <form method="get" id="GoodsSearchForm">
-    {{ form }}
-    <input type="submit" value="search" formaction="{% url 'store:home' %}">
+
+    <label class="search-form-011" style="">
+            <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
+    </label>
+    <button type="submit" class="search_button">検索</button>
+
 </form>
+
+
 
 {% if goods_list %}
 <div>
