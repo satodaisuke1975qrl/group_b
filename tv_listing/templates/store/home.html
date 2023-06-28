@@ -10,12 +10,15 @@
 </form>
 
 {% if goods_list %}
-<ul>
+<div>
+<ul style="list-style: none;">
     {% for goods in goods_list %}
-    <li><a href="{% url 'store:detail' goods.pk %}">{{ goods.name }} {{ goods.price }}円</a></li>
-    <li>商品画像 <img src="{{ goods.image.url }}"/></li>
+    <li><a href="{% url 'store:detail' goods.pk %}">{{ goods.name }} </a></li>
+    {{ goods.price }}円
+    <li><img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/></li>
     {% endfor %}
 </ul>
+</div>
 
 <div class="pagination">
     <span class="step-links">

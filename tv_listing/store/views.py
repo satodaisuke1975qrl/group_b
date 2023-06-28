@@ -23,19 +23,19 @@ class Home(generic.ListView):
         context = super(generic.ListView, self).get_context_data(**kwargs)
         context.update(dict(form=self.form_class, query_string=self.request.GET.urlencode()))
 
-        q_title = self.request.GET.get('title')
+        q_name = self.request.GET.get('name')
 
         context['form'] = GoodsSearchForm(initial={
-            'title': q_title,})
+            'name': q_name,})
 
         return context
 
     def get_queryset(self):
         goodss = Goods.objects.all()
-        q_title = self.request.GET.get('title')
+        q_name = self.request.GET.get('name')
 
-        if q_title:
-            goodss = goodss.filter(title__icontains=q_title)
+        if q_name:
+            goodss = goodss.filter(name__icontains=q_name)
 
         return goodss
 
