@@ -21,6 +21,12 @@
         </div>
         <br>
         <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="address" type="text" placeholder="住所" value="{{ address }}" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
             <label class="selectbox-002">
                 <select name="favorite_category">
                     <option value="">{{ favorite_category }}選択してください</option>
@@ -31,9 +37,12 @@
             </label>
         </div>
         <br>
+
         {{ form.username.errors }}
         {{ form.email.errors }}
+        {{ form.address.errors }}
         {{ form.favorite_category.errors }}
+
         <input type="submit" id="save" class="search_button" value="更新">
     </form>
 </body>

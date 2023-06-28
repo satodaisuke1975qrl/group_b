@@ -32,7 +32,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'favorite_category')
+        fields = ('username', 'email', 'address', 'favorite_category')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
