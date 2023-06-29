@@ -174,6 +174,9 @@ class SearchView(generic.ListView):
 class Login(LoginView):
     template_name = 'tvasahi/login.html'
 
+    # def form_valid(self, form):
+    #     return super().form_valid(form)
+
 
 class Logout(LogoutView):
     template_name = 'tvasahi/logout.html'
@@ -233,7 +236,6 @@ class MyPage(OnlyYouMixin, generic.DetailView):
         context['comment_list'] = Comment.objects.filter(user_name=self.request.user)
         # 他のコードやレンダリングなどの処理
         return context
-
 
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
