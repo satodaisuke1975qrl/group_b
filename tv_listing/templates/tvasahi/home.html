@@ -44,14 +44,5 @@
     <div class="child">
         <a class="twitter-timeline" data-width="400px" data-height="500px" href="https://twitter.com/tv_asahi_PR?ref_src=twsrc%5Etfw" >Tweets by tv_asahi_PR</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-<ul style="list-style: none;">
-    <li><a href="{% url 'store:detail' 1 %}"> </a></li>
-    {% elif  goods.pk == 4 %}
-    <li><a href="{% url 'store:detail' 4 %}"> {{ goods.name }} </a></li>
-    {% elif  goods.pk == 7 %}
-    <li><a href="{% url 'store:detail' 7 %}"> {{ goods.name }} </a></li>
-    {% endif %}
-    {% endfor %}
-</ul>
 </div>
 {% endblock %}
