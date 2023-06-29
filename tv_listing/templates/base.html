@@ -368,6 +368,33 @@
             opacity: 0.6;
         }
 
+        .textbox-001-label,
+        .textbox-001 {
+            color: #333;
+        }
+
+        .textbox-001-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0099;
+        }
+
+        .textbox-001 {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #969da3;
+            border-radius: 3px;
+            font-size: 18px;
+            font-weight: medium;
+            line-height: 1.5;
+        }
+
+        .textbox-001::placeholder {
+            color: #999;
+        }
+
         .search_button{
           cursor: pointer;
           width: 80px;
@@ -431,7 +458,7 @@
 
 <body onload="MouseXY()">
 
-    <div id="Obj_1" style="position:absolute;">
+    <div id="Obj_1" style="position:absolute; z-index:10000;">
         <img src="../../../static/picture/gochan.png" width="40" height="34" alt="画像">
     </div>
 
