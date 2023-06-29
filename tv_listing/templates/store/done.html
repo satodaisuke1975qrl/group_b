@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>購入手続きが完了しました。お買い上げありがとうございます。</p>
+<br>
+    <div style="display: flex; justify-content: space-around; font-weight: bold;">
+        購入手続きが完了しました。お買い上げありがとうございます。
+    </div>
+
+<br>
+
+    <div class="btn_ec btndetail_ec" style="display: flex; justify-content: center;">
+        <a href="{% url 'store:home' %}">トップへ</a>
+    </div>
+
 {% endblock %}

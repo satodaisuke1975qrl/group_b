@@ -494,7 +494,7 @@
             margin-top: 10px;
         }
 
-         .btn_ec a{
+        .btn_ec a{
             display: block;
             display: flex;
             justify-content: center;
@@ -515,6 +515,7 @@
             color: white;
         }
 
+
         .back_ec a::after {
             content: '';
             position: absolute;
@@ -524,6 +525,17 @@
             width: 6px;
             height: 6px;
             border-width: 0 0 2px 2px;
+
+        .btndetail_ec a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+
             border-style: solid;
             border-color: #333;
         }
@@ -535,6 +547,13 @@
 
         .back_ec a:hover::after {
             border-color: transparent transparent #f2f2f2 #f2f2f2;
+
+        .btndetail_ec a:hover {
+            background-color: #4682b4;
+        }
+
+        .btndetail_ec a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 
     </style>

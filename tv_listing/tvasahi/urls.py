@@ -17,6 +17,7 @@ urlpatterns = [
     path('user_update/<int:pk>/', views.UserUpdate.as_view(), name='user_update'),
     path('logout/', views.Logout.as_view(), name='logout'),
     path('user_delete/<int:pk>/', views.CustomUserDeleteView.as_view(), name='user_delete'),
-    path('comment_delete/<int:pk>/', views.CommentDeleteView.as_view(), name='comment_delete')
+    path('comment_delete/<int:pk>/', views.CommentDeleteView.as_view(), name='comment_delete'),
+    path('comment_delete2/<int:pk>/', views.CommentDeleteView2.as_view(), name='comment_delete2')
 
     ]

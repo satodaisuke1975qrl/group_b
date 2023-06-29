@@ -48,7 +48,7 @@ class Tv(models.Model):
 
 
 class Comment(models.Model):
-    user_name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, verbose_name='ユーザー名')
+    user_name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='ユーザー名')
     comment = models.TextField('コメント内容')
     # target = models.ForeignKey(Tv, on_delete=models.PROTECT, verbose_name='紐付く番組名')
     target = models.ForeignKey(Tv, on_delete=models.CASCADE, verbose_name='紐付く番組名')
