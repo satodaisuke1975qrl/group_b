@@ -59,8 +59,9 @@
 </div>
 <br><br>
 
-<h3>投稿コメント一覧</h3>
-{% for comment in comment_list %}
+<h2>投稿コメント一覧</h2>
+{% if comment_list %}
+    {% for comment in comment_list %}
     <div>
         {{ comment.target.date }}
         {{ comment.target.get_time_hour_and_minute }}放送
@@ -73,12 +74,12 @@
             <br>
             {{ comment }}
         {% endif %}
-
     </div>
     <br>
-{% endfor %}
-
-
+    {% endfor %}
+{% else %}
+    過去のコメントはありません
+{% endif %}
 
 {% endblock %}
 
