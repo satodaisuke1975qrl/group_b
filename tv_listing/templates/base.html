@@ -532,6 +532,24 @@
             border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 
+        .back_ec a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 0 0 2px 2px;
+            }
+
+        .back_ec a:hover {
+            background-color: #4682b4;
+        }
+
+        .back_ec a:hover::after {
+            border-color: transparent transparent #f2f2f2 #f2f2f2;
+
     </style>
 </head>
 
