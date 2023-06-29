@@ -1,7 +1,20 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
 {% block content %}
 
 <h2>マイページ</h2>
+<style>
+    .parent{
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    column-gap: 20px;
+    }
+    .icon{
+    border: solid 5px #FF0099
+    }
+
+</style>
+    <div class="parent">
+    <div class="child">
     <table class="detail">
         <tr>
             <th>ユーザー名</th>
@@ -26,6 +39,11 @@
             <td>{{ customuser.favorite_category }}</td>
         </tr>
     </table>
+    </div>
+    <div class="child">
+        <img class="icon" src="{{ customuser.icon.url }}/" width="200px" height="190px">
+    </div>
+    </div>
 
 <br>
 
