@@ -12,14 +12,6 @@
         width: 250px;
     }
 
-    .parent .no-results p,
-    .parent .no-results .btn_ec {
-        text-align: center;
-        padding:5px
-    }
-
-
-
 </style>
 <div style="display: flex; justify-content: space-around;">
 
@@ -39,10 +31,9 @@
 </div>
 
 
-
+<div class="parent">
 <!--    <ul style="list-style: none;">-->
     {% if goods_list %}
-    <div class="parent">
         {% for goods in goods_list %}
             <div class="child" >
                 <a class="ec-name" href="{% url 'store:detail' goods.pk %}">{{ goods.name }} </a>
@@ -76,13 +67,8 @@
         {% endif %}
     </span>
 </div>
-    {% else %}
-        <div class="no-results">
-            <p style="text-align: center;">検索に該当する商品は存在しませんでした</p>
-            <div class="btn_ec back_ec">
-                    <a style="text-align:right" href="{% url 'store:home' %}">トップへ</a>
-            </div>
-        </div>
+{% else %}
+<p>検索に該当する商品は存在しませんでした</p>
+{% endif %}
 
-    {% endif %}
 {% endblock %}
