@@ -2,58 +2,49 @@
 
 {% block content %}
 <table class="ec-detail">
+    <img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/>
     <tr>
-        <th>
-            <img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/>
-        </th>
-        <td class="ec-detail-css">
-            <table>
-                <tr>
-                    <td style="font-weight: bold;">{{ goods.name }}</td>
-                </tr>
-                <tr>
-                    <td>価格：{{ goods.price }}円</td>
-                </tr>
-                <tr>
-                    <td>{{ goods.description }}</td>
-                </tr>
-            </table>
-        </td>
+        <th>商品名</th>
+        <td>{{ goods.name }}</td>
+    </tr>
+    <tr>
+        <th>価格</th>
+        <td>{{ goods.price }}円</td>
+    </tr>
+    <tr>
+        <th>説明</th>
+        <td>{{ goods.description }}</td>
     </tr>
 </table>
-
-<br>
+<hr>
 {% if user.is_authenticated %}
 <form action="{% url 'store:add_modelcart' %}" method="POST">
     {{ form.non_field_errors }}
     {% for field in form %}
-    <div style="display: grid; justify-items: center; grid-template-columns: 1fr 1fr; align-items: center;" >
-        <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-            {{ field }}
-            {{ field.errors }}
-        </div>
-        {% endfor %}
-        {% csrf_token %}
-        <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
-        <button type="submit" class="search_button_blue">追加</button>
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+        {{ field }}
+        {{ field.errors }}
     </div>
+    {% endfor %}
+    {% csrf_token %}
+    <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
+    <button type="submit" class="btn btn-primary">カートに追加</button>
 </form>
 {% else %}
 <form action="{% url 'store:add_sessioncart' %}" method="POST">
     {{ form.non_field_errors }}
     {% for field in form %}
-    <div style="display: flex; justify-content: center;">
-        <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-            {{ field }}
-            {{ field.errors }}
-        </div>
-        {% endfor %}
-        {% csrf_token %}
-        <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
-        <button type="submit" class="search_button_blue">追加</button>
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+        {{ field }}
+        {{ field.errors }}
     </div>
+    {% endfor %}
+    {% csrf_token %}
+    <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
+    <button type="submit" class="btn-primary">カートに追加</button>
+
 </form>
 　　{% endif %}
 {% endblock %}
