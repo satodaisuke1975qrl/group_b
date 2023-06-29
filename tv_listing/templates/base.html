@@ -489,6 +489,49 @@
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
 
+        .btn_ec a{
+            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.1s;
+            color: white;
+            background-color: #00bfff;
+        }
+
+        .btn_ec a:hover {
+            color: white;
+        }
+
+        .btndetail_ec a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .btndetail_ec a:hover {
+            background-color: #4682b4;
+        }
+
+        .btndetail_ec a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
     </style>
 </head>
 

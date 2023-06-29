@@ -5,49 +5,59 @@
 {% if user.is_authenticated %}
 <h2>ショッピングカート</h2>
 {% if cart.units.all %}
-<table>
+<table style="display: flex; justify-content: space-around;">
     <tr>
-        <th>title</th>
-        <td>quantity</td>
+        <th>商品</th>
+        <th>数量</th>
     </tr>
     {% for unit in cart.units.all %}
     <tr>
         <th>{{ unit.goods }}</th>
-        <td>{{ unit.quantity }}</td>
-        <td>
+        <th>{{ unit.quantity }}</th>
+        <td style="padding: 0px 0px 0px 40px;">
             <form method="post" action="{% url 'store:modelcart_delete' %}">{% csrf_token %}
                 <input type="hidden" name="unit_pk" value="{{ unit.pk }}">
                 <input type="hidden" name="uname" value="{{ user.username }}">
-                <input type="submit" value="削除">
+                <input type="submit" class="search_button_blue" value="削除">
             </form>
         </td>
     </tr>
 
     {% endfor %}
 </table>
+<br>
+<div style="display: flex; justify-content: space-around;">
 
-<form action="{% url 'store:purchase_preview' %}" method="get">
-    <input type="hidden" name="uname" value="{{ user.username }}">
-    <input type="submit" value="購入へ">
-</form>
+    <div class="btn_ec btndetail_ec">
+        <a href="{% url 'store:home' %}">買い物を続ける</a>
+    </div>
 
-<button onclick="location.href='/store/home'">お買い物を続ける</button>
+    <form action="{% url 'store:purchase_preview' %}" method="get">
+        <input type="hidden" name="uname" value="{{ user.username }}">
+        <input type="submit" class="search_button_blue" value="購入へ">
+    </form>
+
+</div>
 
 {% else %}
-カートは空です。
+<p>カートは空です。</p>
+<br>
+    <div class="btn_ec btndetail_ec">
+        <a href="{% url 'store:home' %}">トップへ</a>
+    </div>
 {% endif %}
 {% else %}
 {% if lis_cart %}
-<table>
+<table style="display: flex; justify-content: space-around;">
     <tr>
         <th>{{ unit.goods }}</th>
-        <td>{{ unit.quantity }}</td>
+        <th>{{ unit.quantity }}</th>
     </tr>
     {% for unit in lis_cart %}
     <tr>
         <th>{{ unit.goods }}</th>
-        <td>{{ unit.quantity }}</td>
-        <td>
+        <th>{{ unit.quantity }}</th>
+        <td style="padding: 0px 0px 0px 40px;">
             <form method="post" action="{% url 'store:sessioncart_delete' %}">{% csrf_token %}
                 <input type="hidden" name="goods_pk" value="{{ unit.goods_pk }}">
                 <input type="submit" value="削除">
@@ -57,14 +67,26 @@
     {% endfor %}
 </table>
 
-<form action="{% url 'tvasahi:login' %}" method="get">
-    <input type="hidden" name="next_page" value="purchase">
-    <input type="submit" value="購入へ">
-</form>
+<div style="display: flex; justify-content: space-around;">
+
+    <div class="btn_ec btndetail_ec">
+        <a href="{% url 'store:home' %}">買い物を続ける</a>
+    </div>
+
+    <form action="{% url 'tvasahi:login' %}" method="get">
+        <input type="hidden" name="next_page" value="purchase"><a href="#" class="btn_ec btndetail_ec">購入画面へ</a>
+
+        <input type="submit" value="購入へ">
+    </form>
+
+</div>
 
 
 {% else %}
 カートは空です。
+    <div class="btn_ec btndetail_ec">
+        <a href="{% url 'store:home' %}">トップへ</a>
+    </div>
 {% endif %}
 {% endif %}
 
