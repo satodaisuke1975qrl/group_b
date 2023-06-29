@@ -450,12 +450,44 @@
         }
 
         .search_button_blue:hover{
-          background-color: #ffffff
-          color: #00bfff
+          background-color: #ffffff;
+          color: #00bfff;
         }
 
         .ec-name{
             text-decoration: none;
+        }
+
+        .ec-detail{
+          width: 100%;
+          border-collapse: separate;
+        }
+
+        .ec-detail tr{
+          border-bottom: solid 2px white;
+        }
+
+        .ec-detail tr:last-child{
+          border-bottom: none;
+        }
+
+        .ec-detail th{
+          position: relative;
+          text-align: left;
+          width: 15%;
+          background-color: #00bfff;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        .ec-detail td{
+          text-align: left;
+          width: 85%;
+          text-align: center;
+          background-color: #D8F5FF;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
 
     </style>
@@ -479,7 +511,7 @@
                 {% if request.user.is_authenticated %}
                     <div>
                         <a class="img-over" href="{% url 'store:home' %}">
-                            <img src="/static/picture/store.jpg" class="store" width="140px" height="auto">
+                            <img src="/static/picture/store.jpg" class="store" width="140px" height="auto" hspace="15">
                         </a>
                     </div>
                     <div class="btn2">
