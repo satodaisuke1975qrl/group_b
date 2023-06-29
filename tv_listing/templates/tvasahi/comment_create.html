@@ -3,8 +3,16 @@
 {% block content %}
 <form action="" method="POST">
   {% csrf_token %}
-  {{ form.as_div }}
-  <button type="submit">送信</button>
+
+  <div style="display: flex; justify-content: center;">
+    <label>
+      <span class="textbox-001-label">コメント</span>
+      <textarea class="textbox-001" name="comment" placeholder="コメントを入力" cols="70" rows="10">{{ form.username.comment }}</textarea>
+    </label>
+  </div>
+  <div style="display: flex; justify-content: center;">
+  <input type="submit" id="save" class="search_button" value="送信">
+  </div>
 </form>
 
 {% endblock %}
