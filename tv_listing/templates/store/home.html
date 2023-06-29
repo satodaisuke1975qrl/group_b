@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>商品リスト</h2>
-<button onclick="location.href='{% url 'store:modelcart_content' pk=1 %}'">カート</button>
+<button onclick="location.href='{% url 'store:modelcart_content' user.pk %}'">カート</button>
 
 
 <form action="" method="get" id="GoodsSearchForm">
