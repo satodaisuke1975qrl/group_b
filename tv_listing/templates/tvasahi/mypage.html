@@ -75,6 +75,12 @@
             {{ comment }}
         {% endif %}
     </div>
+    <div>
+        <form name="comment_delete" method="post" action="{% url 'tvasahi:comment_delete2' comment.pk %}">
+                {% csrf_token %}
+                <button type="button" class="btn btn-danger" onclick="msgdsp3('{{ comment.pk }}')" >削除</button>
+        </form>
+    </div>
     <br>
     {% endfor %}
 {% else %}
@@ -95,11 +101,20 @@
 
   <script>
     function msgdsp2(){
-    var confirmDelete = confirm('本当に削除しますか？');
+    var confirmDelete = confirm('本当にアカウントを削除しますか？');
       if (confirmDelete) {
         document.delete.submit() ;
       }
     }
+  </script>
 
+  <script>
+    function msgdsp3(pk){
+    var confirmDelete = confirm('本当にコメントを削除しますか？');
+      if (confirmDelete) {
+        document.comment_delete.action = '/comment_delete2/' + pk + '/';
+        document.comment_delete.submit() ;
+      }
+    }
   </script>
 {% endblock %}

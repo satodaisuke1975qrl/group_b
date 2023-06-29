@@ -237,6 +237,13 @@ class MyPage(OnlyYouMixin, generic.DetailView):
         # 他のコードやレンダリングなどの処理
         return context
 
+class CommentDeleteView2(generic.DeleteView):
+    model = Comment
+    success_url = reverse_lazy('tvasahi:mypage')
+
+    def get_success_url(self):
+        return resolve_url('tvasahi:mypage', self.request.user.pk)
+
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
     model = CustomUser
