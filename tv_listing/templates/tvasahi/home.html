@@ -11,17 +11,20 @@
 .flex div{
     border: 1px solid #333;
 }
+.parent{
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    column-gap: 20px;
+}
 
 </style>
-
 {% for date in date_list %}
     <div class="home">
         <input type="radio" name=""><a href="{% url 'tvasahi:tv_list' date.pk %}" style="color: inherit; text-decoration: none;">{{ date.on_air_date }}</a>
     </div>
 {% endfor %}
-
-<div class = "flex">
-<div class="left">
+<div class="parent">
+ <div class="child">
 {% for tv in tv_list %}
 
     <table class="list">
@@ -38,23 +41,17 @@
     </table>
 {% endfor %}
 </div>
-
-<div class="right">
-<a class="twitter-timeline" data-width="400px" data-height="500px" href="https://twitter.com/tv_asahi_PR?ref_src=twsrc%5Etfw" >Tweets by tv_asahi_PR</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<!--<ul style="list-style: none;">-->
-<!--    {% for goods in goods_list %}-->
-<!--    {% if goods.pk == 1 %}-->
-<!--    <li><a href="{% url 'store:detail' 1 %}">{{ goods.name }} </a></li>-->
-<!--    {% elif  goods.pk == 4 %}-->
-<!--    <li><a href="{% url 'store:detail' 4 %}">{{ goods.name }} </a></li>-->
-<!--    {% elif  goods.pk == 7 %}-->
-<!--    <li><a href="{% url 'store:detail' 7 %}">{{ goods.name }} </a></li>-->
-<!--    {% endif %}-->
-<!--    {% endfor %}-->
-<!--</ul>-->
+    <div class="child">
+        <a class="twitter-timeline" data-width="400px" data-height="500px" href="https://twitter.com/tv_asahi_PR?ref_src=twsrc%5Etfw" >Tweets by tv_asahi_PR</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+<ul style="list-style: none;">
+    <li><a href="{% url 'store:detail' 1 %}"> </a></li>
+    {% elif  goods.pk == 4 %}
+    <li><a href="{% url 'store:detail' 4 %}"> {{ goods.name }} </a></li>
+    {% elif  goods.pk == 7 %}
+    <li><a href="{% url 'store:detail' 7 %}"> {{ goods.name }} </a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
 </div>
-
-</div>
-
 {% endblock %}
