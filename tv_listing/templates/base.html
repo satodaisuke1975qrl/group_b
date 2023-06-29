@@ -89,8 +89,10 @@
 
 
         .name-hover:hover td {
+            color: #61275C;
             cursor: pointer;
             font-size: 14.5px;
+            transition: 0.3s;
         }
 
         table.home{
@@ -176,9 +178,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: absolute;
+            position: initial;
             top: 25px;
-            right: 110px;
             width: 140px;
             height: 50px;
             color: #333;
@@ -393,15 +394,16 @@
         .menu {
            display: grid;
            justify-content: space-between;
-           grid-template-columns: 1fr 1fr;
+           grid-template-columns: auto auto;
            grid-template-rows: 1fr;
         }
 
         .right {
             display: grid;
-            grid-template-columns: auto auto auto;
-            justify-items: end;
+            grid-template-columns: auto 140px 90px;
+            justify-items: center;
             align-items: center;
+            column-gap: 5px;
         }
 
         .search_button_blue{
@@ -444,9 +446,9 @@
             </div>
 
             <div class="right">
-            {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                     <div>
-                        <a href="{% url 'store:home' %}">
+                        <a class="img-over" href="{% url 'store:home' %}">
                             <img src="/static/picture/store.jpg" class="store" width="140px" height="auto">
                         </a>
                     </div>
