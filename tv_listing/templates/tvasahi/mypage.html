@@ -41,7 +41,11 @@
     </table>
     </div>
     <div class="child">
-        <img class="icon" src="{{ customuser.icon.url }}/" width="200px" height="190px">
+        {% if customuser.icon %}
+            <img class="icon" src="{{ customuser.icon.url }}/" width="200px" height="190px">
+        {% else %}
+            <img src="../../../static/picture/noimage.png" alt="noimage" width="200x" height="190px">
+        {% endif %}
     </div>
     </div>
 
