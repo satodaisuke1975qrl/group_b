@@ -2,7 +2,18 @@
 
 {% block content %}
 <h2>商品リスト</h2>
-<button onclick="location.href='{% url 'store:modelcart_content' pk=1 %}'">カート</button>
+<style>
+    .parent{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .child{
+        padding: 10px;
+        width: 250px;
+    }
+
+</style>
+<button onclick="location.href='{% url 'store:modelcart_content' user.pk %}'">カート</button>
 
 
 <form action="" method="get" id="GoodsSearchForm">
@@ -15,18 +26,20 @@
 </form>
 
 
+<div class="parent">
+<!--    <ul style="list-style: none;">-->
+    {% if goods_list %}
+        {% for goods in goods_list %}
+            <div class="child" >
+                <a class="ec-name" href="{% url 'store:detail' goods.pk %}">{{ goods.name }} </a>
+                <p>{{ goods.price }}円</p>
+                <a href="{% url 'store:detail' goods.pk %}">
+                    <img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/>
+                </a>
+            </div>
+        {% endfor %}
+<!--    </ul>-->
 
-{% if goods_list %}
-<div>
-<ul style="list-style: none;">
-    {% for goods in goods_list %}
-    <li><a class="ec-name" href="{% url 'store:detail' goods.pk %}">{{ goods.name }} </a></li>
-    <div class="ec-price">{{ goods.price }}円</div>
-    <a href="{% url 'store:detail' goods.pk %}">
-        <li><img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/></li>
-    </a>
-    {% endfor %}
-</ul>
 </div>
 
 <div class="pagination">

@@ -1,7 +1,20 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
 {% block content %}
 
 <h2>マイページ</h2>
+<style>
+    .parent{
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    column-gap: 20px;
+    }
+    .icon{
+    border: solid 5px #FF0099
+    }
+
+</style>
+    <div class="parent">
+    <div class="child">
     <table class="detail">
         <tr>
             <th>ユーザー名</th>
@@ -26,6 +39,15 @@
             <td>{{ customuser.favorite_category }}</td>
         </tr>
     </table>
+    </div>
+    <div class="child">
+        {% if customuser.icon %}
+            <img class="icon" src="{{ customuser.icon.url }}/" width="200px" height="190px">
+        {% else %}
+            <img src="../../../static/picture/noimage.png" alt="noimage" width="200x" height="190px">
+        {% endif %}
+    </div>
+    </div>
 
 <br>
 
@@ -41,8 +63,9 @@
 </div>
 <br><br>
 
-<h3>投稿コメント一覧</h3>
-{% for comment in comment_list %}
+<h2>投稿コメント一覧</h2>
+{% if comment_list %}
+    {% for comment in comment_list %}
     <div>
         {{ comment.target.date }}
         {{ comment.target.get_time_hour_and_minute }}放送
@@ -55,12 +78,12 @@
             <br>
             {{ comment }}
         {% endif %}
-
     </div>
     <br>
-{% endfor %}
-
-
+    {% endfor %}
+{% else %}
+    過去のコメントはありません
+{% endif %}
 
 {% endblock %}
 

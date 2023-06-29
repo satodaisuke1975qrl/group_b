@@ -69,7 +69,7 @@ class Cart(models.Model):
             self._add_session_unit(cart_unit['goods_pk'], cart_unit['quantity'])
 
     def __str__(self):
-        print(self.customuser)
+        # print(self.customuser)
         if hasattr(self, 'customuser'):
             return "{}'s model cart".format(self.customuser.username)
 
