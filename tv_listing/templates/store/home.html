@@ -21,7 +21,7 @@
 <ul style="list-style: none;">
     {% for goods in goods_list %}
     <li><a class="ec-name" href="{% url 'store:detail' goods.pk %}">{{ goods.name }} </a></li>
-    {{ goods.price }}円
+    <div class="ec-price">{{ goods.price }}円</div>
     <a href="{% url 'store:detail' goods.pk %}">
         <li><img src="{{ goods.image.url }}" style="max-width: 100%; max-height: 150px;"/></li>
     </a>
