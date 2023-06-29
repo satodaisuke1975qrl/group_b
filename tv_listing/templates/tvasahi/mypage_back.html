@@ -27,6 +27,20 @@
         </tr>
     </table>
 
+<!--    {% for comment in comment_list %}-->
+<!--    <div>-->
+<!--        {{ tv.get_time_hour_and_minute }}-->
+<!--        {% if tv.url == null %}-->
+<!--            {{ tv.program_name }}-->
+<!--        {% else %}-->
+<!--            <a href="{{ tv.url }}">{{ tv.program_name }}</a>-->
+<!--        {% endif %}-->
+<!--        &lt;!&ndash;　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>&ndash;&gt;-->
+<!--        <a href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--  {% endfor %}-->
+
 <br>
 
 
@@ -39,26 +53,6 @@
         <a href="{% url 'tvasahi:user_delete' customuser.pk %}" onclick="msgdsp2(); return false;" class="btn btn-danger">削除</a>
     </form>
 </div>
-<br><br>
-
-<h3>投稿コメント一覧</h3>
-{% for comment in comment_list %}
-    <div>
-        {{ comment.target.date }}
-        {{ comment.target.get_time_hour_and_minute }}放送
-        {% if comment.target.url == null %}
-            {{ comment.target.program_name }}
-            <br>
-            {{ comment }}
-        {% else %}
-            <a href="{{ comment.target.url }}">{{ comment.target.program_name }}</a>
-            <br>
-            {{ comment }}
-        {% endif %}
-
-    </div>
-    <br>
-{% endfor %}
 
 
 
