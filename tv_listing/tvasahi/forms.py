@@ -41,7 +41,8 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'address', 'favorite_category')
+
+        fields = ('username', 'email', 'address', 'favorite_category', 'icon')
 
         error_messages = {
             'username': {
@@ -58,6 +59,7 @@ class CustomUserCreationForm(UserCreationForm):
             'favorite_category': {
                 'required': "カテゴリーを入力してください。",
             },
+
         }
 
 
@@ -66,8 +68,8 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'address', 'favorite_category')
 
+        fields = ('username', 'email', 'address', 'favorite_category', 'icon')
 
         error_messages = {
             'username': {
