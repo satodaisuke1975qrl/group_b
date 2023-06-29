@@ -82,7 +82,7 @@
           text-align: center;
           background-color: #ffdeff;
           padding: 10px 0;
-          font-size: 14px;
+          font-size: 20px;
           font-weight: 700;
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
@@ -91,7 +91,7 @@
         .name-hover:hover td {
             color: #61275C;
             cursor: pointer;
-            font-size: 14.5px;
+            font-size: 21.5px;
             transition: 0.3s;
         }
 
@@ -454,6 +454,10 @@
           color: #00bfff
         }
 
+        .ec-name{
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
@@ -479,7 +483,7 @@
                         </a>
                     </div>
                     <div class="btn2">
-                        <a href="{% url 'tvasahi:mypage' user.pk %}">マイページへ</a>
+                        <a href="{% url 'tvasahi:mypage' user.pk %}">ようこそ <br> {{ user.username }}さん</a>
                     </div>
                 {% else %}
                     <div class="btn2">
