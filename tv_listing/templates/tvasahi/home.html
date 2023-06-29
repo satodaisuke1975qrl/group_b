@@ -14,7 +14,29 @@
 .parent{
     display: grid;
     grid-template-columns: 1fr 0.2fr;
+    grid-template-rows: 500px 640px 280px 300px;
     column-gap: 20px;
+    row-gap: 20px;
+}
+.child_list{
+    grid-row: 1 / 5;
+    grid-column: 1 / 2;
+}
+.child_twitter{
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+.child_ranking{
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+.child_go{
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+.child_summer_station{
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
 }
 
 </style>
@@ -24,7 +46,7 @@
     </div>
 {% endfor %}
 <div class="parent">
- <div class="child">
+ <div class="child_list">
 {% for tv in tv_list %}
 
     <table class="list">
@@ -41,8 +63,27 @@
     </table>
 {% endfor %}
 </div>
-    <div class="child">
+    <div class="child_twitter">
         <a class="twitter-timeline" data-width="400px" data-height="500px" href="https://twitter.com/tv_asahi_PR?ref_src=twsrc%5Etfw" >Tweets by tv_asahi_PR</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+
+    <div class="child_ranking">
+        <h3>ゴーちゃんグッズサイト 売上ランキング</h3>
+        <ul style="list-style: none; padding-left:0;">
+            <li><a href="{% url 'store:detail' 1 %}"><img src="../../../static/picture/rank1.png" alt="商品ランキング1位" width="400px"></a></li>
+            <li><a href="{% url 'store:detail' 4 %}"><img src="../../../static/picture/rank2.png" alt="商品ランキング2位" width="400px"></a></li>
+            <li><a href="{% url 'store:detail' 6 %}"><img src="../../../static/picture/rank3.png" alt="商品ランキング3位" width="400px"></a></li>
+        </ul>
+    </div>
+    
+    <div class="child_go">
+        <h3>ゴーちゃん。サイト</h3>
+        <a href="https://www.tv-asahi.co.jp/go-chan/"><img src="../../../static/picture/go_page.png" alt="ゴーちゃん。サイト" width="400px"></a>
+    </div>
+
+    <div class="child_summer_station">
+        <h3>テレビ朝日からのお知らせ</h3>
+        <a href="https://www.tv-asahi.co.jp/summerstation/"><img src="../../../static/picture/summer_station.png" alt="サマステサイト" width="400px"></a>
     </div>
 </div>
 {% endblock %}
