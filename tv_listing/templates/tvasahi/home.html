@@ -18,11 +18,13 @@
 }
 
 </style>
+<div style="display: grid; justify-items: center; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; overflow: scroll;" >
 {% for date in date_list %}
-    <div class="home">
+    <div class="home" >
         <input type="radio" name=""><a href="{% url 'tvasahi:tv_list' date.pk %}" style="color: inherit; text-decoration: none;">{{ date.on_air_date }}</a>
     </div>
 {% endfor %}
+</div>
 <div class="parent">
  <div class="child">
 {% for tv in tv_list %}
