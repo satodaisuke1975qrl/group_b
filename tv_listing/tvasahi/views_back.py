@@ -13,7 +13,6 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import get_user_model, logout, login, authenticate  # 追加
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 
 # # Create your views here.
@@ -100,14 +99,10 @@ class CommentCreateView(generic.CreateView):
         return redirect('tvasahi:tv_detail', self.kwargs['pk'])
 
 
-
-
-
 """
 class CommentListView(generic.ListView):
-    model = Comment
-    template_name = 'tvasahi/mypage.html'
-    
+
+
 class CommentUpdateView(generic.UpdateView):
 
 """
@@ -210,30 +205,10 @@ class OnlyYouMixin(UserPassesTestMixin):
 
 
 # マイページ
-# class MyPage(OnlyYouMixin, generic.DetailView):
-#     model = CustomUser
-#     template_name = 'tvasahi/mypage.html'
-#     # モデル名小文字(user)でモデルインスタンスがテンプレートファイルに渡される
-#
-#     @login_required
-#     def mypage_view(request):
-#         customuser = request.customuser  # ログイン中のCustomUserオブジェクトを取得
-#         context['comment_list'] = Comment.objects.filter(user_name=customuser)
-#         # 他のコードやレンダリングなどの処理
-#
-#         return render(request, 'mypage.html', context)
-
-
 class MyPage(OnlyYouMixin, generic.DetailView):
     model = CustomUser
     template_name = 'tvasahi/mypage.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comment_list'] = Comment.objects.filter(user_name=self.request.user)
-        # 他のコードやレンダリングなどの処理
-        return context
-
+    # モデル名小文字(user)でモデルインスタンスがテンプレートファイルに渡される
 
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
