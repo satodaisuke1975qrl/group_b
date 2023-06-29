@@ -13,17 +13,22 @@
     }
 
 </style>
-<button onclick="location.href='{% url 'store:modelcart_content' user.pk %}'">カート</button>
+<div style="display: flex; justify-content: space-around;">
 
+    <form action="" method="get" id="GoodsSearchForm">
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-blue" style="">
+                <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
+            </label>
+            <button type="submit" class="search_button_blue" style="">検索</button>
+        </div>
+    </form>
 
-<form action="" method="get" id="GoodsSearchForm">
-    <div style="display: flex; justify-content: center;">
-        <label class="search-form-blue" style="">
-            <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
-        </label>
-        <button type="submit" class="search_button_blue" style="">検索</button>
+    <div class="btn_ec btndetail_ec">
+        <a href="{% url 'store:modelcart_content' user.pk %}">カートを見る</a>
     </div>
-</form>
+
+</div>
 
 
 <div class="parent">

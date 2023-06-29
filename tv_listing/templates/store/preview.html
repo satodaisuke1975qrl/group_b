@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>購入内容</h1>
-    <table>
+<h1 style="display: flex; justify-content: space-around;">購入内容</h1>
+   <table style="display: flex; justify-content: space-around;">
         <tr>
-            <td>商品</td>
-            <td>数量</td>
+            <th style="text-align: center;">商品</th>
+            <th style="text-align: center;">数量</th>
         </tr>
         {% for cartunit in user.cart.units.all %}
             <tr>
-                <td>{{ cartunit.goods }}</td>
-                <td>{{ cartunit.quantity }}</td>
+                <th style="text-align: center;">{{ cartunit.goods }}</th>
+                <th style="text-align: center;">{{ cartunit.quantity }}</th>
             </tr>
         {% endfor %}
     </table>
 
-    <h1>請求額</h1>
-    {{ total_price }}円
+    <h1 style="display: flex; justify-content: space-around;">請求額</h1>
+    <div style="display: flex; justify-content: space-around; font-weight: bold;">{{ total_price }}円</div>
 
-    <h1>配送先</h1>
-    <p>{{ user.address }}</p>
-
-    <form action="{% url 'store:_purchase_process' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="uname" value="{{ user.username }}">
-        <input type="submit" value="購入確定">
-    </form>
+    <h1 style="display: flex; justify-content: space-around;">配送先</h1>
+    <div style="display: flex; justify-content: space-around; font-weight: bold;">{{ user.address }}</div>
+<br><br><br>
+    <div style="display: flex; justify-content: space-around;">
+        <form action="{% url 'store:_purchase_process' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="uname" value="{{ user.username }}">
+            <input type="submit" class="search_button_blue" value="購入確定">
+        </form>
+    </div>
 {% endblock %}
