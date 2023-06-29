@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}tv asahi 番組表{% endblock %}</title>   <link href="../static/css/base.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+
+        body{
+            background: #eeeeee;
+        }
+
+        img.logo{
+            width: 180px;
+            height: 90px;
+        }
+
+        img.search{
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+        }
+
+        table.detail{
+          width: 100%;
+          border-collapse: separate;
+        }
+
+        table.detail tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.detail tr:last-child{
+          border-bottom: none;
+        }
+
+        table.detail th{
+          position: relative;
+          text-align: left;
+          width: 15%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.detail td{
+          text-align: left;
+          width: 85%;
+          text-align: center;
+          background-color: #ffdeff;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        table.list{
+          width: 100%;
+          border-collapse: separate;
+        }
+
+        table.list tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.list tr:last-child{
+          border-bottom: none;
+        }
+
+        table.list th{
+          position: relative;
+          text-align: left;
+          width: 10%;
+          background-color: #ff0099;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        table.list td{
+          text-align: left;
+          width: 100%;
+          text-align: center;
+          background-color: #ffdeff;
+          padding: 10px 0;
+          font-size: 20px;
+          font-weight: 700;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+
+        .name-hover:hover td {
+            color: #61275C;
+            cursor: pointer;
+            font-size: 21.5px;
+            transition: 0.3s;
+        }
+
+        table.home{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        table.home tr{
+          border-bottom: solid 2px white;
+        }
+
+        table.home tr:last-child{
+          border-bottom: none;
+        }
+
+        .btn a {
+            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.1s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+        .btn a:hover {
+            color: white;
+        }
+
+        .btndetail a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .btndetail a:hover {
+            background-color: #c71585;
+        }
+
+        .btndetail a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+        .back a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 0 0 2px 2px;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .back a:hover {
+            background-color: #c71585;
+        }
+
+        .back a:hover::after {
+            border-color: transparent transparent #f2f2f2 #f2f2f2;
+        }
+
+        .btn2 a {
+            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: initial;
+            top: 25px;
+            width: 140px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            color: white;
+            background-color: #00bfff;
+        }
+
+        .btn2 a:hover{
+            color: white;
+            background-color: #4682b4;
+        }
+
+
+        .home{
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            text-decoration: none;
+            margin: 15px;
+            padding: 1rem 4rem;
+            font-weight: bold;
+            border: 2px solid #red
+            background: #ffffff;
+            color: #ff0099;
+            border-radius: 100vh;
+            transition: 0.1s;
+            custer: pointer;
+        }
+
+        .home:hover{
+            background: #ff0099;
+            color: #fff;
+        }
+
+        .home input:checked+label{
+            background: #ff0099;
+            color: #fff;
+        }
+
+        .home input{
+            display: none;
+        }
+
+        #home_background{
+            background: white;
+        }
+
+        .btn form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.1s;
+            color: white;
+            background-color: #ff0099;
+        }
+
+        .btn form:hover {
+            color: white;
+        }
+
+        .search-form-011 {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid #ff0099;
+            border-radius: 3px;
+            width: 295px;
+        }
+
+        .search-form-011 input {
+            width: 300px;
+            height: 50px;
+            padding: 5px 15px 5px 0;
+            border: none;
+            box-sizing: border-box;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .search-form-011 input::placeholder {
+            color: #767d83;
+        }
+
+        .search-form-011 button::before {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23767d83%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            content: '';
+        }
+
+        .search-form-blue {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid #00bfff;
+            border-radius: 3px;
+            width: 295px;
+        }
+
+        .search-form-blue input {
+            width: 300px;
+            height: 45px;
+            padding: 5px 15px 5px 0;
+            border: none;
+            box-sizing: border-box;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .search-form-blue input::placeholder {
+            color: #767d83;
+        }
+
+        .search-form-blue button::before {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23767d83%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            content: '';
+        }
+
+        .selectbox-002 {
+            position: relative;
+        }
+
+        .selectbox-002::before,
+        .selectbox-002::after {
+            position: absolute;
+            content: '';
+            pointer-events: none;
+        }
+
+        .selectbox-002::before {
+            right: 0;
+            display: inline-block;
+            width: 2.8em;
+            height: 2.8em;
+            border-radius: 0 3px 3px 0;
+            background-color: #ff0099;
+            content: '';
+        }
+
+        .selectbox-002::after {
+            position: absolute;
+            top: 50%;
+            right: 1.4em;
+            transform: translate(50%, -50%) rotate(45deg);
+            width: 6px;
+            height: 6px;
+            border-bottom: 3px solid #fff;
+            border-right: 3px solid #fff;
+            content: '';
+        }
+
+        .selectbox-002 select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            min-width: 230px;
+            height: 2.8em;
+            padding: .4em 3.6em .4em .8em;
+            border: 2px solid #ff0099;
+            border-radius: 3px;
+            color: #333333;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .selectbox-002 select:focus {
+            outline: 1px solid #ff0099;
+        }
+
+        .img-over img:hover{
+            opacity: 0.6;
+        }
+
+        .textbox-001-label,
+        .textbox-001 {
+            color: #333;
+        }
+
+        .textbox-001-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0099;
+        }
+
+        .textbox-001 {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #969da3;
+            border-radius: 3px;
+            font-size: 18px;
+            font-weight: medium;
+            line-height: 1.5;
+        }
+
+        .textbox-001::placeholder {
+            color: #999;
+        }
+
+        .search_button{
+          cursor: pointer;
+          width: 80px;
+          height: 45px;
+          border
+          padding: 0.5em 1em;
+          text-decoration: none;
+          background: #ff0099;
+          color: #FFF;
+          border-radius: 3px;
+        }
+
+        .search_button:active{
+          box-shadow:inset -2px -2px 3px rgba(255, 255, 255, .6),
+            inset 2px 2px 3px rgba(0, 0, 0, .6);
+        }
+
+        .search_button:hover{
+          background-color: #ffffff
+          color: #ff0099
+        }
+
+        .menu {
+           display: grid;
+           justify-content: space-between;
+           grid-template-columns: auto auto;
+           grid-template-rows: 1fr;
+        }
+
+        .right {
+            display: grid;
+            grid-template-columns: auto 140px 90px;
+            justify-items: center;
+            align-items: center;
+            column-gap: 5px;
+        }
+
+        .search_button_blue{
+          cursor: pointer;
+          width: 80px;
+          height: 45px;
+          border
+          padding: 0.5em 1em;
+          text-decoration: none;
+          background: #00bfff;
+          color: #FFF;
+          border-radius: 3px;
+        }
+
+        .search_button_blue:active{
+          box-shadow:inset -2px -2px 3px rgba(255, 255, 255, .6),
+            inset 2px 2px 3px rgba(0, 0, 0, .6);
+        }
+
+        .search_button_blue:hover{
+          background-color: #ffffff;
+          color: #00bfff;
+        }
+
+        .ec-name{
+            text-decoration: none;
+        }
+
+        .ec-detail{
+          width: 100%;
+          border-collapse: separate;
+        }
+
+        .ec-detail tr{
+          border-bottom: solid 2px white;
+        }
+
+        .ec-detail tr:last-child{
+          border-bottom: none;
+        }
+
+        .ec-detail th{
+          position: relative;
+          text-align: left;
+          width: 15%;
+          color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        .ec-detail td{
+          text-align: left;
+          width: 85%;
+          text-align: center;
+          background-color: #D8F5FF;
+          padding: 10px 0;
+          font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+        }
+
+        .btn_ec a{
+            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.1s;
+            color: white;
+            background-color: #00bfff;
+        }
+
+        .btn_ec a:hover {
+            color: white;
+        }
+
+        .btndetail_ec a::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: rotate(45deg) translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            border-color: #333;
+        }
+
+
+        .btndetail_ec a:hover {
+            background-color: #4682b4;
+        }
+
+        .btndetail_ec a:hover::after {
+            border-color: #f2f2f2 #f2f2f2 transparent transparent;
+        }
+
+    </style>
+</head>
+
+<body onload="MouseXY()">
+
+    <div id="Obj_1" style="position:absolute; z-index:10000;">
+        <img src="../../../static/picture/gochan.png" width="40" height="34" alt="画像">
+    </div>
+
+    <div id="home_background">
+        <div class="menu">
+            <div class="left">
+                <a class="img-over" href="{% url 'tvasahi:home' %}">
+                     <img src="/static/picture/blue.png" class="logo"/>
+                </a>
+            </div>
+
+            <div class="right">
+                {% if request.user.is_authenticated %}
+                    <div>
+                        <a class="img-over" href="{% url 'store:home' %}">
+                            <img src="/static/picture/store.jpg" class="store" width="140px" height="auto" hspace="15">
+                        </a>
+                    </div>
+                    <div class="btn2">
+                        <a href="{% url 'tvasahi:mypage' user.pk %}">ようこそ <br> {{ user.username }}さん</a>
+                    </div>
+                {% else %}
+                    <div class="btn2">
+                        <a href="{% url 'tvasahi:login' %}">ログイン</a>
+                    </div>
+                {% endif %}
+
+                <a class="img-over" href="{% url 'tvasahi:tv_search' %}">
+                    <img src="/static/picture/bluesearch.png" class="search">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+    </main>
+
+    <script>
+            function MouseXY() {
+                　document.addEventListener('mousemove', function(event) {
+                  var obj = document.getElementById('Obj_1');
+                  var x = event.pageX;
+                  var y = event.pageY;
+                  obj.style.left = x + 20 + 'px';
+                  obj.style.top = y - 5 + 'px';
+                });
+
+            }
+    </script>
+</body>
+</html>
