@@ -3,10 +3,69 @@
 <body>
     <h2>ユーザー登録ページ</h2>
     <form method="POST">
-    {% csrf_token %}
+        {% csrf_token %}
 
-    {{ form.as_p }}
-    <input type="submit" id="save" value="登録">
-</form>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">名前</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.username.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="username" type="text" placeholder="ユーザー名" value="" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">パスワード</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.password1.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="password1" type="text" placeholder="パスワード" value="" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">パスワード（確認用）</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.password2.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="password2" type="text" placeholder="パスワード（確認用）" value="" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">メールアドレス</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.email.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="email" type="text" placeholder="メールアドレス" value="">
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;" >住所</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.address.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="address" type="text" placeholder="住所" value="" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">カテゴリー</div>
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">{{ form.favorite_category.errors }}</div>
+        <div style="display: flex; justify-content: center;">
+            <label class="selectbox-002">
+                <select name="favorite_category">
+                    <option value="">{{ favorite_category }}選択してください</option>
+                    {% for favorite_category in form.favorite_category.field.queryset %}
+                    {% if favorite_category.id == request.user.favorite_category.id %}
+                        <option value="{{ favorite_category.id }}" >{{ favorite_category }}</option>
+                    {% else %}
+                        <option value="{{ favorite_category.id }}" >{{ favorite_category }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <br>
+
+        <div style="display: flex; justify-content: center;">
+        <input type="submit" id="save" class="search_button" value="登録">
+        </div>
+    </form>
 </body>
 {% endblock %}
