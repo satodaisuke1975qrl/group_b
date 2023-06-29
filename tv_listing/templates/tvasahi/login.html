@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}tv asahi 番組表{% endblock %}</title>   <link href="../static/css/base.css" rel="stylesheet" type="text/css">
+    <title>{% block title %}tv asahi 番組表{% endblock %}</title>
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css">
 
     <style type="text/css">
 
@@ -87,7 +88,7 @@
           font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
         }
 
-        .btn a {
+        .btn{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -103,11 +104,11 @@
             background-color: #ff0099;
         }
 
-        .btn a:hover {
+        .btn:hover {
             color: white;
         }
 
-        .btndetail a::after {
+        .btndetail::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -121,11 +122,11 @@
         }
 
 
-        .btndetail a:hover {
+        .btndetail:hover {
             background-color: #c71585;
         }
 
-        .btndetail a:hover::after {
+        .btndetail:hover::after {
             border-color: #f2f2f2 #f2f2f2 transparent transparent;
         }
 
@@ -173,6 +174,58 @@
             color: white;
             background-color: #c71585;
         }
+        .search-form-011 {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid #ff0099;
+            border-radius: 3px;
+            width: 295px;
+        }
+
+        .search-form-011 input {
+            width: 300px;
+            height: 50px;
+            padding: 5px 15px 5px 0;
+            border: none;
+            box-sizing: border-box;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .search-form-011 input::placeholder {
+            color: #767d83;
+        }
+
+        .search-form-011 button::before {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23767d83%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            content: '';
+        }
+
+        .search_button{
+          cursor: pointer;
+          width: 80px;
+          height: 45px;
+          border
+          padding: 0.5em 1em;
+          text-decoration: none;
+          background: #ff0099;
+          color: #FFF;
+          border-radius: 3px;
+        }
+
+        .search_button:active{
+          box-shadow:inset -2px -2px 3px rgba(255, 255, 255, .6),
+            inset 2px 2px 3px rgba(0, 0, 0, .6);
+        }
+
+        .search_button:hover{
+          background-color: #ffffff
+          color: #ff0099
+        }
 
     </style>
 </head>
@@ -190,14 +243,28 @@
 <div style="display: flex; justify-content: center;">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+
         <div style="display: flex; justify-content: center;">
-            <input type="submit" id="save" value="ログイン" style="left: 50px;">
+            <label class="search-form-011">
+                <input name="username" type="text" placeholder="ユーザー名" value="">
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <label class="search-form-011">
+                <input name="password" type="password" placeholder="パスワード" value="" >
+            </label>
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <input type="submit" id="save" class="btn btndetail" value="ログイン">
         </div>
     </form>
 </div>
-
-<input type="button" onclick="location.href='{% url 'tvasahi:user_create' %}'" value="アカウント新規作成ページへ">
+<br>
+<div style="display: flex; justify-content: center;">
+    <input type="button" onclick="location.href='{% url 'tvasahi:user_create' %}'" class="btn btndetail" value="アカウント新規作成">
+</div>
 
 </body>
 </html>
