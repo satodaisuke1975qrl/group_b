@@ -8,12 +8,12 @@
 
 <form action="" method="GET">
     <div style="">
-        キーワード :
+        <div style="font-weight: 700;">キーワード :</div>
         <label class="search-form-011" style="">
             <input name="keyword" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.keyword }}">
         </label>
-
-        カテゴリー :<br>
+        <br>
+        <div style="font-weight: 700;">カテゴリー :</div>
         <label class="selectbox-002">
             <select name="category">
                 <option value="" >{{ category }}選択してください</option>
@@ -27,7 +27,7 @@
             </select>
         </label>
         <br>
-        <button type="submit" class="search_button">検索</button>
+        <button type="submit" class="search_button" style="border:none; margin: 20px 0px 10px 100px;">検索</button>
     </div>
 </form>
 
@@ -42,5 +42,9 @@
         </tr>
     </table>
 {% endfor %}
+
+<div class="btn back" style="margin: 30px 0px 0px 0px;">
+    <a href="{% url 'tvasahi:home' %}">番組一覧へ戻る</a>
+</div>
 
 {% endblock %}
