@@ -3,24 +3,23 @@
 {% block content %}
 
 <style>
-    .search_button{
+    .delete_button{
           cursor: pointer;
-          width: 50px;
-          height: 25px;
-          border
+          width: 60px;
+          height: 30px;
+          border: none;
           padding: 0.5em 1em;
           text-decoration: none;
           background: #ff0099;
           color: #FFF;
           border-radius: 3px;
     }
-    .search_button:active{
+    .delete_button:active{
           box-shadow:inset -2px -2px 3px rgba(255, 255, 255, .6),
           inset 2px 2px 3px rgba(0, 0, 0, .6);
     }
-    .search_button:hover{
-      background-color: #ffffff
-      color: #ff0099
+    .delete_button:hover{
+      background-color: #c71585;
     }
     h4{
 	font-weight: bolder;
@@ -79,7 +78,9 @@
             {% if comment.user_name.username == user.username %}
                 <form name="delete{{ comment.pk }}" method="post" action="{% url 'tvasahi:comment_delete' comment.pk %}">
                     {% csrf_token %}
-                    <button class="search_button" type="button" onclick="msgdsp('delete{{ comment.pk }}')">削除</button>
+
+                    <input class="delete_button" type="button"  onclick="msgdsp('delete{{ comment.pk }}')" value="削除">
+
                 </form>
             {% endif %}
         </div>
