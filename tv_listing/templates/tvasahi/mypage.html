@@ -145,8 +145,9 @@
     function msgdsp3(pk){
     var confirmDelete = confirm('本当にコメントを削除しますか？');
       if (confirmDelete) {
-        document.comment_delete.action = '/comment_delete2/' + pk + '/';
-        document.comment_delete.submit() ;
+        const form = document.getElementsByName('comment_delete')[0]
+        form.action = '/comment_delete2/' + pk + '/';
+        form.submit() ;
       }
     }
   </script>
