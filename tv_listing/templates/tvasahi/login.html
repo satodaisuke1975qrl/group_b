@@ -240,9 +240,21 @@
 
 
 <h2 style="display: flex; justify-content: center;">ログインページ</h2>
+
 <div style="display: flex; justify-content: center;">
+
     <form method="POST">
         {% csrf_token %}
+
+        <div style="display: flex; justify-content: center; font-size: 15px; font-weight: bold; color: red;">
+            {% if messages %}
+            {% for message in messages %}
+                {% if message.tags %}
+                {% endif %}
+                {{ message }}
+            {% endfor %}
+            {% endif %}
+        </div>
 
         <div style="display: flex; justify-content: center;">
             <label class="search-form-011">
