@@ -67,35 +67,40 @@
         <div style="display: flex; justify-content: center; font-size: 20px; font-weight: bold;">アイコン画像</div>
 
 <div style="display: flex; justify-content: center;">
-<label class="file-label" for="file_upload">
-  <span class="file-text">ファイルを選択する</span>
-  <input class="file" type="file" name="icon" id="file_upload">
-</label>
+  <label class="file-label" for="file_upload">
+    <span class="file-text">ファイルを選択する</span>
+    <input class="file" type="file" name="test" id="file_upload" onchange="displayFileName(this)">
+  </label>
+</div>
+<div style="text-align: center;">
+  <span id="file_status" style="color: black;">ファイルが選択されていません</span>
+  <span id="file_name" style="display: none;"></span>
 </div>
 
 <style>
 label.file-label > .file {
-    display: none;
+  display: none;
 }
+
 label.file-label {
   cursor: pointer;
   display: inline-block;
   width: 150px;
   height: 25px;
-  border: 2px solid #3f3f3f;
+  border: none;
   padding: 0.5em 1em;
   text-align: center;
   background: #ff0099;
   color: #FFF;
   border-radius: 3px;
-  }
-  label.file-label .file-text:active{
-  border-color: #ccc; /* 上下左右の縁の色を指定 */
-  border-top-color: #ff0000; /* 上の縁の色を指定 */
-  border-bottom-color: #00ff00; /* 下の縁の色を指定 */
-  border-left-color: #0000ff; /* 左の縁の色を指定 */
-  border-right-color: #ffff00; /* 右の縁の色を指定 */
+}
 
+label.file-label .file-text:active {
+  border-color: #ccc;
+  border-top-color: #ff0000;
+  border-bottom-color: #00ff00;
+  border-left-color: #0000ff;
+  border-right-color: #ffff00;
 }
 
 label.file-label .file-text {
@@ -108,6 +113,27 @@ label.file-label:hover {
   color: #ff0099;
 }
 </style>
+
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+  var statusElement = document.getElementById("file_status");
+  statusElement.style.display = "inline-block";
+});
+
+function displayFileName(input) {
+  var fileElement = document.getElementById("file_name");
+  var statusElement = document.getElementById("file_status");
+  if (input.files.length > 0) {
+    fileElement.innerText = input.files[0].name;
+    fileElement.style.display = "inline-block";
+    statusElement.style.display = "none";
+  } else {
+    fileElement.innerText = "";
+    fileElement.style.display = "none";
+    statusElement.style.display = "inline-block";
+  }
+}
+</script>
 
         <br>
         <div style="display: flex; justify-content: center;">
