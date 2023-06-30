@@ -7,7 +7,7 @@ app_name = 'store'
 
 urlpatterns = [
     path('home/', views.Home.as_view(), name='home'),
-    path('detail/<int:pk>/', views.GoodsDetail.as_view(), name='detail'),
+    path('detail/<int:pk>/', login_required(views.GoodsDetail.as_view()), name='detail'),
     path('add_sessioncart/', views.SessionAddToCart.as_view(), name='add_sessioncart'),
     path('sessioncontent/', views.SessionCartContent.as_view(), name='sessioncart_content'),
     path('add_modelcart/', views.ModelAddToCart.as_view(), name='add_modelcart'),
