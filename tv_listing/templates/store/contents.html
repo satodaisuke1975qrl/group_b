@@ -18,7 +18,7 @@
             <form method="post" action="{% url 'store:modelcart_delete' %}">{% csrf_token %}
                 <input type="hidden" name="unit_pk" value="{{ unit.pk }}">
                 <input type="hidden" name="uname" value="{{ user.username }}">
-                <input type="submit" class="search_button_blue" value="削除">
+                <input type="submit" class="search_button_blue" style="border:none;" value="削除">
             </form>
         </td>
     </tr>
@@ -28,13 +28,13 @@
 <br>
 <div style="display: flex; justify-content: space-around;">
 
-    <div class="btn_ec btndetail_ec">
-        <a href="{% url 'store:home' %}">買い物を続ける</a>
+    <div>
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">買い物を続ける</a>
     </div>
 
     <form action="{% url 'store:purchase_preview' %}" method="get">
         <input type="hidden" name="uname" value="{{ user.username }}">
-        <input type="submit" class="search_button_blue" value="購入へ">
+        <button type="submit" class="btn_ec btndetail_ec" style="border:none;">購入画面へ</button>
     </form>
 
 </div>
@@ -42,8 +42,8 @@
 {% else %}
 <p>カートは空です。</p>
 <br>
-    <div class="btn_ec back_ec">
-        <a href="{% url 'store:home' %}">トップへ</a>
+    <div>
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">トップへ</a>
     </div>
 {% endif %}
 {% else %}
@@ -69,14 +69,13 @@
 
 <div style="display: flex; justify-content: space-around;">
 
-    <div class="btn_ec btndetail_ec">
-        <a href="{% url 'store:home' %}">買い物を続ける</a>
+    <div>
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">買い物を続ける</a>
     </div>
 
     <form action="{% url 'tvasahi:login' %}" method="get">
         <input type="hidden" name="next_page" value="purchase"><a href="#" class="btn_ec btndetail_ec">購入画面へ</a>
-
-        <input type="submit" value="購入へ">
+        <button type="submit" class="btn_ec btndetail_ec" style="border:none;">購入画面へ</button>
     </form>
 
 </div>

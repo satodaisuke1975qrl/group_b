@@ -46,26 +46,26 @@
     <div class="child">
     <table class="detail">
         <tr>
-            <th>ユーザー名</th>
-            <td>{{ customuser.username }}</td>
+            <th >ユーザー名</th>
+            <td style="font-weight: 500;">{{ customuser.username }}</td>
         </tr>
     </table>
     <table class="detail">
         <tr>
             <th>メールアドレス</th>
-            <td>{{ customuser.email }}</td>
+            <td style="font-weight: 500;">{{ customuser.email }}</td>
         </tr>
     </table>
     <table class="detail">
         <tr>
             <th>住所</th>
-            <td>{{ customuser.address }}</td>
+            <td style="font-weight: 500;">{{ customuser.address }}</td>
         </tr>
     </table>
     <table class="detail">
         <tr>
             <th>好きな番組ジャンル</th>
-            <td>{{ customuser.favorite_category }}</td>
+            <td style="font-weight: 500;">{{ customuser.favorite_category }}</td>
         </tr>
     </table>
     </div>
@@ -81,13 +81,13 @@
 <br>
 
 
-<div class="btn btndetail" style="display: flex; justify-content: space-around;">
-    <a href="{% url 'tvasahi:user_update' customuser.pk %}" >更新ページへ</a>
-    <a href="#" onclick="msgdsp1(); return false;">ログアウト</a>
+<div class="" style="display: flex; justify-content: space-around;">
+    <a href="{% url 'tvasahi:user_update' customuser.pk %}" class="btn btndetail">更新ページへ</a>
+    <a href="#" onclick="msgdsp1(); return false;" class="btn btndetail">ログアウト</a>
     <form name="delete" method="post" action="{% url 'tvasahi:user_delete' customuser.pk %}">
         {% csrf_token %}
         <input type="hidden" class="btn btn-danger" onclick="msgdsp2(); return false;" >
-        <a href="{% url 'tvasahi:user_delete' customuser.pk %}" onclick="msgdsp2(); return false;" class="btn btn-danger">削除</a>
+        <a href="{% url 'tvasahi:user_delete' customuser.pk %}" onclick="msgdsp2(); return false;" class="btn btndetail"">削除</a>
     </form>
 </div>
 <br><br>
@@ -109,7 +109,9 @@
 
         <form name="comment_delete" method="post" action="{% url 'tvasahi:comment_delete2' comment.pk %}">
                 {% csrf_token %}
+
                 <button type="button" class="search_button"  style="border: none; width: 50px; height: 25px;" onclick="msgdsp3('{{ comment.pk }}')" >削除</button>
+
         </form>
     </div>
     <br>

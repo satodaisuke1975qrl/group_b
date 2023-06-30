@@ -23,7 +23,7 @@
                 <td><a href="{{ tv.url }}" target="_blank" style="color: inherit; text-decoration: none;">{{ tv.program_name }}</a></td>
             {% endif %}
             <!--　<button onclick="location.href='{% url "tvasahi:tv_detail" tv.pk %}'" type="submit">詳細ページ</button>-->
-            <td class="btn btndetail"><a class="white-link" href="{% url 'tvasahi:tv_detail' tv.pk %}">詳細ページ</a></td>
+                <td><a class="white-link btn btndetail" href="{% url 'tvasahi:tv_detail' tv.pk %} ">詳細ページ</a></td>
         </tr>
     </table>
   {% endfor %}

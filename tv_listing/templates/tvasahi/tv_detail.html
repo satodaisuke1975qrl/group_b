@@ -78,7 +78,9 @@
             {% if comment.user_name.username == user.username %}
                 <form name="delete{{ comment.pk }}" method="post" action="{% url 'tvasahi:comment_delete' comment.pk %}">
                     {% csrf_token %}
+
                     <input class="delete_button" type="button"  onclick="msgdsp('delete{{ comment.pk }}')" value="削除">
+
                 </form>
             {% endif %}
         </div>
