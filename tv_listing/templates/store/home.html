@@ -27,7 +27,7 @@
             <label class="search-form-blue" style="">
                 <input name="name" type="text" placeholder="キーワードを入力" value="{{ form.cleaned_data.name }}">
             </label>
-            <button type="submit" class="search_button_blue" style="">検索</button>
+            <button type="submit" class="btn_ec btndetail_ec" style="border:none; margin: 0px 0px 0px 2px;">検索</button>
         </div>
     </form>
 
@@ -73,8 +73,8 @@
 {% else %}
         <div class="no-results">
             <p style="text-align: center;">検索に該当する商品は存在しませんでした</p>
-            <div class="btn_ec btndetail_ec">
-                <a style="text-align:right" href="{% url 'store:home' %}">トップへ</a>
+            <div>
+                <a style="text-align:right" href="{% url 'store:home' %}" class="btn_ec back_ec">トップへ</a>
             </div>
         </div>
 
