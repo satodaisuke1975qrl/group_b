@@ -27,7 +27,8 @@
 <form action="{% url 'store:add_modelcart' %}" method="POST">
     {{ form.non_field_errors }}
     {% for field in form %}
-    <div style="display: grid; justify-items: center; grid-template-columns: 1fr 1fr; align-items: center;" >
+    <div style="display: grid; justify-items: center; grid-template-columns: 1fr 1fr 1fr; align-items: center;" >
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">トップへ</a>
         <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
             {{ field }}
@@ -36,7 +37,7 @@
         {% endfor %}
         {% csrf_token %}
         <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
-        <button type="submit" class="search_button_blue">追加</button>
+        <button type="submit" class="btn_ec btndetail_ec" style="border:none;">追加</button>
     </div>
 </form>
 {% else %}
@@ -44,6 +45,7 @@
     {{ form.non_field_errors }}
     {% for field in form %}
     <div style="display: flex; justify-content: center;">
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">トップへ</a>
         <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
             {{ field }}
@@ -52,7 +54,8 @@
         {% endfor %}
         {% csrf_token %}
         <input type="hidden" name="goods_pk" value="{{ goods.pk }}">
-        <button type="submit" class="search_button_blue">追加</button>
+        <a href="{% url 'store:home' %}" class="btn_ec back_ec">トップへ</a>
+        <button type="submit" class="btn_ec btndetail_ec" style="border:none;">追加</button>
     </div>
 </form>
 　　{% endif %}

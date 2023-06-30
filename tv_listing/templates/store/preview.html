@@ -25,7 +25,7 @@
         <form action="{% url 'store:_purchase_process' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="uname" value="{{ user.username }}">
-            <input type="submit" class="search_button_blue" value="購入確定">
+            <button type="submit" class="btn_ec btndetail_ec" style="border:none;">購入確定</button>
         </form>
     </div>
 {% endblock %}
