@@ -87,7 +87,7 @@
     <form name="delete" method="post" action="{% url 'tvasahi:user_delete' customuser.pk %}">
         {% csrf_token %}
         <input type="hidden" class="btn btn-danger" onclick="msgdsp2(); return false;" >
-        <a href="{% url 'tvasahi:user_delete' customuser.pk %}" onclick="msgdsp2(); return false;" class="btn btndetail"">削除</a>
+        <a href="{% url 'tvasahi:user_delete' customuser.pk %}" onclick="msgdsp2(); return false;" class="btn btndetail">削除</a>
     </form>
 </div>
 <br><br>

@@ -68,7 +68,7 @@
     <h1>コメント欄</h1>
     {% for comment in tv.comment_set.all %}
         <div style="border: solid 1px; border-radius: 5px; padding: 5px; margin: 5px;">
-            <h4 class="comment_child"><img src="{{ comment.user_name.icon.url }}" width="25px" alt="アイコン" style="border-radius: 10px;">{{ comment.user_name.username }}</h4>
+            <h4 class="comment_child"><img src="{{ comment.user_name.icon.url }}" width="25px" height="25px" alt="アイコン" style="border-radius: 10px;">{{ comment.user_name.username }}</h4>
             <p class="comment_child" style="font-size: 10px; padding-top: 0px; margin-top: 0px;">{{ comment.pub_date|date:"Y/m/d(D) H:i:s" }}</p>
 
             <div>
