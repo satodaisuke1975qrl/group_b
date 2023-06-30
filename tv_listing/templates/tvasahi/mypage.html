@@ -82,7 +82,7 @@
     <div>
         <form name="comment_delete" method="post" action="{% url 'tvasahi:comment_delete2' comment.pk %}">
                 {% csrf_token %}
-                <button type="button" class="btn btn-danger" onclick="msgdsp3('{{ comment.pk }}')" >削除</button>
+                <input type="button" class="btn btndetail" onclick="msgdsp3('{{ comment.pk }}')" style="border:none;" value="削除">
         </form>
     </div>
     <br>
