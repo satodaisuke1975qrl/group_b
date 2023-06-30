@@ -174,8 +174,9 @@ class SearchView(generic.ListView):
 class Login(LoginView):
     template_name = 'tvasahi/login.html'
 
-    # def form_valid(self, form):
-    #     return super().form_valid(form)
+    def form_invalid(self, form):
+        messages.error(self.request, 'ログインに失敗しました。正しいユーザー名とパスワードを入力してください。')
+        return super().form_invalid(form)
 
 
 class Logout(LogoutView):
