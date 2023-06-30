@@ -12,6 +12,35 @@
     border: solid 5px #FF0099
     }
 
+<!--コメント欄のcss-->
+    .search_button{
+          cursor: pointer;
+          width: 50px;
+          height: 25px;
+          border: none;
+          padding: 0.5em 1em;
+          text-decoration: none;
+          background: #ff0099;
+          color: #FFF;
+          border-radius: 3px;
+    }
+    .search_button:active{
+          box-shadow:inset -2px -2px 3px rgba(255, 255, 255, .6),
+          inset 2px 2px 3px rgba(0, 0, 0, .6);
+    }
+    .search_button:hover{
+        background-color: #c71585;
+    }
+    .comment_child{
+        font-weight: bolder;
+        vertical-align: middle;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+	}
+
+
+
 </style>
     <div class="parent">
     <div class="child">
@@ -64,25 +93,25 @@
 <br><br>
 
 <h2>投稿コメント一覧</h2>
+
 {% if comment_list %}
     {% for comment in comment_list %}
-    <div>
-        {{ comment.target.date }}
-        {{ comment.target.get_time_hour_and_minute }}放送
+    <div style="border: solid 1px; border-radius: 5px; padding: 5px; margin: 0px;">
         {% if comment.target.url == null %}
-            {{ comment.target.program_name }}
-            <br>
+        <p class="comment_child">{{ comment.target.date }} {{ comment.target.get_time_hour_and_minute }}放送  『{{ comment.target.program_name }}』</p>
+        <p style="font-size: 10px; padding-top: 0px; margin-top: 0px;">{{ comment.pub_date|date:"Y/m/d(D) H:i:s" }} 投稿</p>
             {{ comment }}
         {% else %}
-            <a href="{{ comment.target.url }}">{{ comment.target.program_name }}</a>
-            <br>
+        <p class="comment_child">{{ comment.target.date }} {{ comment.target.get_time_hour_and_minute }}放送  <a href="{{ comment.target.url }}">『{{ comment.target.program_name }}』</a></p>
+        <p style="font-size: 10px; padding-top: 0px; margin-top: 0px;">{{ comment.pub_date|date:"Y/m/d(D) H:i:s" }} 投稿</p>
             {{ comment }}
         {% endif %}
-    </div>
-    <div>
+
         <form name="comment_delete" method="post" action="{% url 'tvasahi:comment_delete2' comment.pk %}">
                 {% csrf_token %}
-                <input type="button" class="btn btndetail" onclick="msgdsp3('{{ comment.pk }}')" style="border:none;" value="削除">
+
+                <button type="button" class="search_button"  style="border: none; width: 50px; height: 25px;" onclick="msgdsp3('{{ comment.pk }}')" >削除</button>
+
         </form>
     </div>
     <br>
